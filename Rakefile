@@ -13,6 +13,7 @@ task :install => [:submodules] do
   linkables = []
   linkables += Dir.glob('git/*') if want_to_install?('git')
   linkables += Dir.glob('irb/*') if want_to_install?('irb/pry')
+  linkables += Dir.glob('screen/*') if want_to_install?('screen')
   linkables += Dir.glob('ruby/*') if want_to_install?('ruby (gems)')
   linkables += Dir.glob('vimify/*') if want_to_install?('vimification of mysql/irb/command line')
   linkables += Dir.glob('{vim,vimrc}') if want_to_install?('vim')
