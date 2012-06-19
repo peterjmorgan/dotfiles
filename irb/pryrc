@@ -170,3 +170,71 @@ module CodeRay
         end
     end
 end
+
+def pbcopy(str)
+  IO.popen('pbcopy', 'r+') {|io| io.puts str }
+  output.puts "-- Copy to clipboard --\n#{str}"
+end
+
+def pattern
+  blah = %x[/usr/local/newmsf/trunk/tools/pattern_create.rb 8096]
+  blah.pbcopy
+end
+
+def arr_read(file)
+  temp = []
+  
+  temp = File.read(file).split("\n");nil
+
+  puts "read #{temp.size} elements"
+  
+  return temp
+end
+
+def pget(url)
+
+#  if url.is_a? String
+  begin
+    $a.get(url)
+  rescue e
+  
+  end
+  puts "[#{$a.page.code},#{$a.page.body.size}]"
+end
+
+def newweb(str = nil, enable_proxy = nil)
+  begin
+    require 'mechanize' 
+  rescue LoadError
+    puts "Mechanize not installed"
+  end
+  
+  $a = Mechanize.new
+  if enable_proxy
+    $a.set_proxy("localhost",8080)
+  end
+  
+  if str
+    unless str.match(/http:\/\//)
+      str = "http://" + str
+    end
+    $a.get(str) 
+    puts "[#{$a.page.code},#{$a.page.body.size}] - #{str}"
+  end
+end
+
+Pry.config.commands.command "hiscopy", "History copy to clipboard" do |n|
+  pbcopy _pry_.input_array[n ? n.to_i : -1]
+end
+
+Pry.config.commands.command "copy", "Copy to clipboard" do |str|
+  unless str
+    str = "#{_pry_.input_array[-1]}#=> #{_pry_.last_result}\n"
+  end
+  pbcopy str
+end
+
+Pry.config.commands.command "lastcopy", "Last result copy to clipboard" do
+  pbcopy _pry_.last_result.chomp
+end
+
