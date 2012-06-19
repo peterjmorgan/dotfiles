@@ -31,7 +31,7 @@ alias ae='vi $yadr/zsh/aliases.zsh' #alias edit
 alias ar='source $yadr/zsh/aliases.zsh'  #alias reload
 
 # vim using
-alias vim=$(brew ls macvim | grep Contents/MacOS/Vim)
+#alias vim=$(brew ls macvim | grep Contents/MacOS/Vim)
 
 # vimrc editing
 alias ve='vi ~/.vimrc'

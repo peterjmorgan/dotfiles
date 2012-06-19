@@ -7,15 +7,18 @@
 # ================================
 
 # Don't change. The following determines where YADR is installed.
+
 yadr=`find -L ~ -type file -maxdepth 2 -name .yadr | head | sed 's:\.yadr\/::'`
+#yadr="/Users/pmorgan/.dotfiles"
 
 # Source oh-my-zsh if it is installed.
 if [[ -d $HOME/.oh-my-zsh ]]; then
   # Path to your oh-my-zsh configuration.
   ZSH=$HOME/.oh-my-zsh
 
+  echo "found OMZ"
   # Set name of the theme to load.
-  ZSH_THEME="skwp"
+  ZSH_THEME="bira"
 
   # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
   # Example format: plugins=(rails git textmate ruby lighthouse)

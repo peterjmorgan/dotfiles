@@ -1,11 +1,3 @@
-zmodload -i zsh/parameter
-insert-last-command-output() {
-  LBUFFER+="$(eval $history[$((HISTCMD-1))])"
-}
-
-zle -N insert-last-command-output
-bindkey "^X^L" insert-last-command-output
-
 # ruby grep
 function rgrep() {
    find -L . -type f -name \*.rb -exec grep -n -i -H --color "$1" {} \;
@@ -178,3 +170,4 @@ function mdir {
   mkdir -p $1
   cd $1
 }
+
