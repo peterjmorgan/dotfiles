@@ -34,7 +34,7 @@ map ,jF :CloseSingleConque<CR>:CtrlP factories<CR>
 map ,jT :CloseSingleConque<CR>:CtrlP test<CR>
 
 "Cmd-(m)ethod - jump to a method (tag in current file)
-map ,m :CloseSingleConque<CR>:CtrlPBufTag<CR>
+"map ,m :CloseSingleConque<CR>:CtrlPBufTag<CR>
 
 "Ctrl-(M)ethod - jump to a method (tag in all files)
-map ,M :CloseSingleConque<CR>:CtrlPBufTagAll<CR>
+"map ,M :CloseSingleConque<CR>:CtrlPBufTagAll<CR>

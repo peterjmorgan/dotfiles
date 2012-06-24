@@ -40,6 +40,10 @@ alias ve='vi ~/.vimrc'
 alias ze='vi ~/.zshrc'
 alias zr='source ~/.zshrc'
 
+# shell var editing
+alias se='vi $yadr/zsh/shellvars.zsh'
+alias sr='source $yadr/zsh/shellvars.zsh'
+
 # Git Aliases
 alias gs='git status'
 alias gstsh='git stash'
@@ -108,9 +112,12 @@ alias tfdl='tail -f log/development.log'
 # Vim/ctags "mctags = make ctags", using the ruby specific version
 # to save some time
 alias mctags=~/.bin/run_tags.rb #'/opt/local/bin/ctags -Rf ./tags *'
+alias maketags=~'/usr/local/bin/ctags -Rf ./tags *'
 
 alias ka9='killall -9'
 alias k9='kill -9'
+alias pk='pkill'
+alias pk9='pkill -9'
 
 # Gem install
 alias sgi='sudo gem install --no-ri --no-rdoc'
@@ -125,3 +132,6 @@ alias portforward='sudo ipfw add 1000 forward 127.0.0.1,3000 ip from any to any 
 
 alias rdm='rake db:migrate'
 alias rdmr='rake db:migrate:redo'
+
+# shellvar links
+alias gocur='pushd .; cd $CUR'

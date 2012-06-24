@@ -326,3 +326,6 @@
 	path = vim/bundle/skwp-vim-powerline
 	url = https://github.com/skwp/vim-powerline.git
   ignore = dirty
+[submodule "vim/bundle/dimasg-vim-mark"]
+	path = vim/bundle/dimasg-vim-mark
+	url = https://github.com/dimasg/vim-mark.git
