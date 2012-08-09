@@ -44,6 +44,10 @@ alias zr='source ~/.zshrc'
 alias se='vi $yadr/zsh/shellvars.zsh'
 alias sr='source $yadr/zsh/shellvars.zsh'
 
+# functions editing
+alias fe='vi $yadr/zsh/functions.zsh'
+alias fr='source $yadr/zsh/functions.zsh'
+
 # Git Aliases
 alias gs='git status'
 alias gstsh='git stash'
@@ -104,10 +108,10 @@ alias cl='clear'
 alias gz='tar -zcvf'
 
 # Ruby
-alias c='pry -r ./config/environment'
-alias ts='thin start'
-alias ms='mongrel_rails start'
-alias tfdl='tail -f log/development.log'
+# alias c='pry -r ./config/environment'
+# alias ts='thin start'
+# alias ms='mongrel_rails start'
+# alias tfdl='tail -f log/development.log'
 
 # Vim/ctags "mctags = make ctags", using the ruby specific version
 # to save some time
@@ -135,3 +139,40 @@ alias rdmr='rake db:migrate:redo'
 
 # shellvar links
 alias gocur='pushd .; cd $CUR'
+
+alias cgrep='grep --color'
+
+#alias cal='`cal`; today=`date "+%e"`; echo -en "${cal/${today}/\033[1;32m${today}\033[0m}"'
+
+alias hdm='hdiutil mount'
+alias hdu='hdiutil unmount'
+
+alias pathcommands="IFS=':' i=($PATH); printf '%s\n' ${i[*]/%//*}"
+alias showpath="echo $PATH | tr ':' '\n'"
+
+# Rsync stuff
+alias rscp='rsync -aP --stats --no-whole-file --inplace'
+alias rsmv='rscp --remove-source-files'
+
+alias rebin='chmod -R u+x ~/bin'
+alias gsc='screencapture -ic'
+alias qsl='qs *(.om[1])'
+
+alias extip='curl -s checkip.dyndns.org PGIP'
+alias quickconns="netstat -ant|awk '{print $NF}'|grep -v '[a-z]'|sort|uniq -c "
+
+alias pxmlp='pbpaste | xmllint --format - | pbcopy'
+
+# Apple Specific
+alias getip0='ipconfig getifaddr en0'
+alias getip1='ipconfig getifaddr en1'
+alias cgrep='grep --color=always'
+
+alias gocur='pushd .; cd $CUR'
+alias cdv='pushd .; cd ~/vaults'
+alias cdd='pushd .; cd ~/Downloads'
+
+# Routing aliases
+alias rlist='netstat -rn -f inet'
+
+alias gsd='/usr/local/git/get-shit-done/get-shit-done'

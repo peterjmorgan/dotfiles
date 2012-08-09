@@ -1,3 +1,33 @@
+
+def pbpaste
+    `pbpaste`
+end
+
+alias :pbp :pbpaste
+
+def pbcopy
+    IO.popen("pbcopy", "w") {|io| io.write self}
+end
+
+def pbcopyb
+    IO.popen("pbcopy", "w") {|io| io.write self.force_encoding("ASCII-8BIT")}
+end
+alias :pbcb :pbcopyb
+
+def ep
+  eval(pbpaste)
+end
+
+def feb
+  self.force_encoding("ASCII-8BIT")
+end
+
+def full_chars
+  test = ""
+  (0..255).each {|x| test << x.chr }
+  test
+end
+
 # === EDITOR ===
 Pry.editor = 'vi'
 
@@ -39,9 +69,6 @@ end
 # === CUSTOM COMMANDS ===
 # from: https://gist.github.com/1297510
 default_command_set = Pry::CommandSet.new do
-  command "copy", "Copy argument to the clip-board" do |str|
-     IO.popen('pbcopy', 'w') { |f| f << str.to_s }
-  end
 
   command "clear" do
     system 'clear'
@@ -74,6 +101,40 @@ Pry.config.commands.import default_command_set
 # === CONVENIENCE METHODS ===
 # Stolen from https://gist.github.com/807492
 # Use Array.toy or Hash.toy to get an array or hash to play with
+
+class Object    
+    def tap
+        yield(self)
+        self
+    end
+
+    def filetap(filename, mode="a")
+        File.open(filename, mode) { |f| f.puts self }
+        self
+    end
+
+    def vimtap()
+        runner = Kernel.method(:system)
+        curtime = Time.now.strftime("%Y%m%d")
+        @file = "#{curtime}-#{rand(0x1000000).to_s(36)}"
+        tf = Tempfile.new(@file)
+        tf.open; tf.puts self; tf.rewind
+        runner.call("mvim #{tf.path}")
+    end
+    def hextap()
+        runner = Kernel.method(:system)
+        curtime = Time.now.strftime("%Y%m%d")
+        @file = "#{curtime}-#{rand(0x1000000).to_s(36)}"
+        tf = Tempfile.new(@file)
+        tf.open; tf.puts self; tf.rewind
+        runner.call("open -a \"0xED\" #{tf.path}")
+    end
+    
+    def interesting_methods
+     (self.methods - Object.instance_methods).sort
+    end
+end # object
+
 class Array
   def self.toy(n=10, &block)
     block_given? ? Array.new(n,&block) : Array.new(n) {|i| i+1}
@@ -83,6 +144,79 @@ end
 class Hash
   def self.toy(n=10)
     Hash[Array.toy(n).zip(Array.toy(n){|c| (96+(c+1)).chr})]
+  end
+end
+
+class String
+
+  def deflate
+    Zlib::Deflate.deflate(self)
+  end
+  alias :defl :deflate
+
+  def inflate
+    Zlib::Inflate.inflate(self)
+  end
+  alias :infl :inflate
+
+  def chunks(csize)
+    (0...self.size).step(csize).map {|x| self[x,csize]}
+  end
+
+  def urldec
+      CGI.unescape(self)  
+  end
+
+  def urlenc
+      CGI.escape(self)
+  end
+
+  def md5
+      Digest::MD5.hexdigest(self)
+  end
+
+  def md5d
+      Digest::MD5.digest(self)
+  end
+
+  def sha1
+      Digest::SHA1.hexdigest(self)
+  end
+
+  def sha1d
+      Digest::SHA1.digest(self)
+  end
+
+  def ud64
+      self.urldec.tr('_','/').tr('-','+').d64
+  end
+
+  def ub64
+      self.b64.tr('/','_').tr('+','-').urlenc
+  end
+
+  def pbcopy
+      IO.popen("pbcopy", "w") {|io| io.write self}
+  end
+
+  def pbc
+    self.pbcopy
+  end
+
+  def ep
+    eval(pbpaste)
+  end
+
+  def hd
+    hexdump
+  end
+
+  def feb
+    self.force_encoding("ASCII-8BIT")
+  end
+
+  def enc
+    self.encoding
   end
 end
 
@@ -171,11 +305,6 @@ module CodeRay
     end
 end
 
-def pbcopy(str)
-  IO.popen('pbcopy', 'r+') {|io| io.puts str }
-  output.puts "-- Copy to clipboard --\n#{str}"
-end
-
 def pattern
   blah = %x[/usr/local/newmsf/trunk/tools/pattern_create.rb 8096]
   blah.pbcopy
@@ -195,11 +324,11 @@ def pget(url)
 
 #  if url.is_a? String
   begin
-    $a.get(url)
+    $W.get(url)
   rescue e
   
   end
-  puts "[#{$a.page.code},#{$a.page.body.size}]"
+  puts "[#{$W.page.code},#{$W.page.body.size}]"
 end
 
 def newweb(str = nil, enable_proxy = nil)
@@ -209,32 +338,29 @@ def newweb(str = nil, enable_proxy = nil)
     puts "Mechanize not installed"
   end
   
-  $a = Mechanize.new
+  $W = Mechanize.new
   if enable_proxy
-    $a.set_proxy("localhost",8080)
+    $W.set_proxy("localhost",8080)
   end
   
   if str
     unless str.match(/http:\/\//)
       str = "http://" + str
     end
-    $a.get(str) 
-    puts "[#{$a.page.code},#{$a.page.body.size}] - #{str}"
+    $W.get(str) 
+    puts "[#{$W.page.code},#{$W.page.body.size}] - #{str}"
   end
 end
 
-Pry.config.commands.command "hiscopy", "History copy to clipboard" do |n|
-  pbcopy _pry_.input_array[n ? n.to_i : -1]
-end
+# Constants
 
-Pry.config.commands.command "copy", "Copy to clipboard" do |str|
-  unless str
-    str = "#{_pry_.input_array[-1]}#=> #{_pry_.last_result}\n"
-  end
-  pbcopy str
-end
-
-Pry.config.commands.command "lastcopy", "Last result copy to clipboard" do
-  pbcopy _pry_.last_result.chomp
-end
-
+INT_MAX = 2147483647
+INT_MIN = -2147483648
+UINT_MAX = 4294967295
+ULONG_MAX = 4294967295
+SCHAR_MAX = 127
+SCHAR_MIN = -128
+UCHAR_MAX = 255
+USHORT_MAX = 65535
+SHORT_MAX = 32767
+SHORT_MIN = -32768

@@ -329,3 +329,9 @@
 [submodule "vim/bundle/dimasg-vim-mark"]
 	path = vim/bundle/dimasg-vim-mark
 	url = https://github.com/dimasg/vim-mark.git
+[submodule "vim/bundle/vim-scripts-lustyjuggler"]
+	path = vim/bundle/vim-scripts-lustyjuggler
+	url = https://github.com/vim-scripts/LustyJuggler.git
+[submodule "vim/bundle/evervim"]
+	path = vim/bundle/evervim
+	url = https://github.com/kakkyz81/evervim.git

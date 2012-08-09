@@ -3,12 +3,6 @@ function rgrep() {
    find -L . -type f -name \*.rb -exec grep -n -i -H --color "$1" {} \;
 }
 
-# revisit this with perl/ruby
-# can't do regexes with unix find, need something like aspx?
-function aspgrep() {
-  find -L . -type f -name \*.asp\* -exec grep -n -i -H --color "$1" {} \;
-}
-
 # quick grep
 function qgrep() {
   find -L . -type f -exec grep -n -i -H --color "$1" {} \;
@@ -125,6 +119,7 @@ function stelnet() {
 function numbers() {
   open -a "Numbers" $1
 }
+
 # quick port scan - ip port
 function qp() {
   sudo nmap -sS -T5 -p$2 $1
@@ -140,10 +135,6 @@ function rbxmlpp() {
 
 function jsb() {
   pbpaste | js-beautify -i
-}
-
-function mtsodown {
- 
 }
 
 function addpaths {
@@ -171,3 +162,6 @@ function mdir {
   cd $1
 }
 
+function ccal {
+  cal=`cal`; today=`date "+%e"`; echo -en "${cal/${today}/\033[1;32m${today}\033[0m}"
+}
