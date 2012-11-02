@@ -28,6 +28,12 @@ def full_chars
   test
 end
 
+def reqs
+  require 'rbkb'
+  require 'nokogiri'
+  require 'mechanize'
+end
+
 # === EDITOR ===
 Pry.editor = 'vi'
 
@@ -339,6 +345,7 @@ def newweb(str = nil, enable_proxy = nil)
   end
   
   $W = Mechanize.new
+  $W.user
   if enable_proxy
     $W.set_proxy("localhost",8080)
   end
@@ -364,3 +371,4 @@ UCHAR_MAX = 255
 USHORT_MAX = 65535
 SHORT_MAX = 32767
 SHORT_MIN = -32768
+XSSFISH = "<;'\"}()[]>{"

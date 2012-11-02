@@ -335,3 +335,6 @@
 [submodule "vim/bundle/evervim"]
 	path = vim/bundle/evervim
 	url = https://github.com/kakkyz81/evervim.git
+[submodule "vim/bundle/kshenoy-vim-signature"]
+	path = vim/bundle/kshenoy-vim-signature
+	url = https://github.com/kshenoy/vim-signature.git

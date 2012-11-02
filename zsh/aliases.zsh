@@ -32,6 +32,8 @@ alias ar='source $yadr/zsh/aliases.zsh'  #alias reload
 
 # vim using
 #alias vim=$(brew ls macvim | grep Contents/MacOS/Vim)
+alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
+
 
 # vimrc editing
 alias ve='vi ~/.vimrc'
@@ -116,7 +118,7 @@ alias gz='tar -zcvf'
 # Vim/ctags "mctags = make ctags", using the ruby specific version
 # to save some time
 alias mctags=~/.bin/run_tags.rb #'/opt/local/bin/ctags -Rf ./tags *'
-alias maketags=~'/usr/local/bin/ctags -Rf ./tags *'
+alias maketags='/usr/local/bin/ctags -Rf ./tags *'
 
 alias ka9='killall -9'
 alias k9='kill -9'
@@ -176,3 +178,7 @@ alias cdd='pushd .; cd ~/Downloads'
 alias rlist='netstat -rn -f inet'
 
 alias gsd='/usr/local/git/get-shit-done/get-shit-done'
+
+alias work='sudo /usr/local/git/get-shit-done/get-shit-done.py work'
+alias play='sudo /usr/local/git/get-shit-done/get-shit-done.py play'
+
