@@ -32,6 +32,10 @@ function qgfind() {
     find -L . -type f -iname "*$1*" -exec grep -n -i -H --color "$2" {} \;
 }
 
+function qpdffail() {
+find -L . -type f -iname "*.pdf" | grep -i $1 | xargs -I {} pdfgrep -C line -H "\ FAILED(:|\ )" {}
+}
+
 function qfind0() {
     find -L . -type f -iname "*$1*" -print0
 }
@@ -42,6 +46,14 @@ function qfind1() {
 
 function qfind10() {
     find -L . -type f -iname "*$1*" -maxdepth 1 -print0
+}
+
+function mfind() {
+    mdfind -name "$1"
+}
+
+function mfind1() {
+    mdfind -onlyin . -name "$1"
 }
 
 function gs() { 
@@ -100,9 +112,9 @@ function rgem() {
   rvm jruby-1.5.2,1.8.7,1.9.2 gem install $1
 }
 
-function rgem-shire() {
-  rvm jruby-1.5.2,1.8.7,1.9.2 gem install -p http://proxycacheF.hewitt.com:3128 $1
-}
+#function rgem-shire() {
+#  rvm jruby-1.5.2,1.8.7,1.9.2 gem install -p http://proxycacheF.hewitt.com:3128 $1
+#}
 
 function whog() {
   whois -h whois.geektools.com "$1" 
@@ -165,3 +177,4 @@ function mdir {
 function ccal {
   cal=`cal`; today=`date "+%e"`; echo -en "${cal/${today}/\033[1;32m${today}\033[0m}"
 }
+

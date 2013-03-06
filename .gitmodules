@@ -338,3 +338,18 @@
 [submodule "vim/bundle/kshenoy-vim-signature"]
 	path = vim/bundle/kshenoy-vim-signature
 	url = https://github.com/kshenoy/vim-signature.git
+[submodule "vim/bundle/hsitz-VimOrganizer"]
+	path = vim/bundle/hsitz-VimOrganizer
+	url = https://github.com/hsitz/VimOrganizer.git
+[submodule "vim/bundle/vimscripts-utl"]
+	path = vim/bundle/vimscripts-utl
+	url = https://github.com/vim-scripts/utl.vim.git
+[submodule "vim/bundle/chrisbra-narrowrgn"]
+	path = vim/bundle/chrisbra-narrowrgn
+	url = https://github.com/chrisbra/NrrwRgn.git
+[submodule "vim/bundle/powerline"]
+	path = vim/bundle/powerline
+	url = https://github.com/Lokaltog/powerline.git
+[submodule "vim/bundle/vim-seek"]
+	path = vim/bundle/vim-seek
+	url = https://github.com/goldfeld/vim-seek.git

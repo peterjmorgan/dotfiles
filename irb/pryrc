@@ -155,6 +155,11 @@ end
 
 class String
 
+  def json_pp
+    require 'json'
+    JSON.pretty_generate(JSON.parse(self))
+  end
+
   def deflate
     Zlib::Deflate.deflate(self)
   end
@@ -358,6 +363,26 @@ def newweb(str = nil, enable_proxy = nil)
     puts "[#{$W.page.code},#{$W.page.body.size}] - #{str}"
   end
 end
+
+def dif_buf(a,b)
+  handles = Array.new
+  handles << StringIO.new(a)
+  handles << StringIO.new(b)
+
+  while !handles.any?(&:eof)
+    bytes = handles.map(&:readbyte)
+    if bytes.uniq.size > 1
+      @diff = true
+      printf "%08x:"+" %02x"*handles.size+"\n", handles[0].pos-1, *bytes
+    end 
+  end
+
+end
+
+def pry_reload
+  load "~/.pryrc"
+end
+
 
 # Constants
 

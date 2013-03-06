@@ -8,3 +8,6 @@ if filereadable(expand("~/.vimrc.after"))
   source ~/.vimrc.after
 endif
 
+
+au! BufRead,BufWrite,BufWritePost,BufNewFile *.org 
+au BufEnter *.org            call org#SetOrgFileType()
