@@ -1,3 +1,3 @@
-GIT=/usr/local/git
+GIT=~/git
 VAULT=/Users/pmorgan/Documents/vaults
-RUBYLIB=/usr/local/src/metasm
+RUBYLIB=~/git/rbkb/lib

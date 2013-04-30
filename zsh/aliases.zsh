@@ -32,7 +32,7 @@ alias ar='source $yadr/zsh/aliases.zsh'  #alias reload
 
 # vim using
 #alias vim=$(brew ls macvim | grep Contents/MacOS/Vim)
-alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
+#alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
 
 
 # vimrc editing
