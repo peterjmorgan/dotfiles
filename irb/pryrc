@@ -34,13 +34,22 @@ def reqs
   require 'mechanize'
 end
 
+def temprbkb
+  $: << "~/git/rbkb/lib"
+  load "rbkb.rb"
+end
+
+def pl(blah = _)
+  puts blah
+end
+
 # === EDITOR ===
 Pry.editor = 'vi'
 
 # == Pry-Nav - Using pry as a debugger ==
-Pry.commands.alias_command 'c', 'continue' rescue nil
-Pry.commands.alias_command 's', 'step' rescue nil
-Pry.commands.alias_command 'n', 'next' rescue nil
+#Pry.commands.alias_command 'c', 'continue' rescue nil
+#Pry.commands.alias_command 's', 'step' rescue nil
+#Pry.commands.alias_command 'n', 'next' rescue nil
 
 # === CUSTOM PROMPT ===
 # This prompt shows the ruby version (useful for RVM)
@@ -305,16 +314,16 @@ TERM_TOKEN_COLORS = {
         :head => '45'
 }
 
-module CodeRay
-    module Encoders
-        class Terminal < Encoder
-            # override old colors
-            TERM_TOKEN_COLORS.each_pair do |key, value|
-                TOKEN_COLORS[key] = value
-            end
-        end
-    end
-end
+#module CodeRay
+#    module Encoders
+#        class Terminal < Encoder
+#            # override old colors
+#            TERM_TOKEN_COLORS.each_pair do |key, value|
+#                TOKEN_COLORS[key] = value
+#            end
+#        end
+#    end
+#end
 
 def pattern
   blah = %x[/usr/local/newmsf/trunk/tools/pattern_create.rb 8096]
@@ -350,7 +359,6 @@ def newweb(str = nil, enable_proxy = nil)
   end
   
   $W = Mechanize.new
-  $W.user
   if enable_proxy
     $W.set_proxy("localhost",8080)
   end
@@ -377,6 +385,10 @@ def dif_buf(a,b)
     end 
   end
 
+end
+
+def quickepoch
+  Time.now.to_f.to_s.gsub(/\./,"")[(0..13)]
 end
 
 def pry_reload

@@ -39,7 +39,7 @@ syntax on
 
 set incsearch        "Find the next match as we type the search
 set hlsearch         "Hilight searches by default
-set viminfo='100,f1  "Save up to 100 marks, enable capital marks
+set viminfo='100,f1!  "Save up to 100 marks, enable capital marks
 
 " ================ Turn Off Swap Files ==============
 
@@ -107,3 +107,9 @@ set sidescroll=1
 for f in split(glob('~/.vim/plugin/settings/*.vim'), '\n')
   exe 'source' f
 endfor
+
+" Marks 
+
+let g:mwAutoLoadMarks = 1 
+let g:mwAutoSaveMarks = 1
+

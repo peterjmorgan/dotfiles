@@ -8,6 +8,9 @@
 
 # Don't change. The following determines where YADR is installed.
 
+autoload -U promptinit
+promptinit
+prompt adam1
 yadr=`find -L ~ -type file -maxdepth 2 -name .yadr | head | sed 's:\.yadr\/::'`
 #yadr="/Users/pmorgan/.dotfiles"
 
@@ -54,3 +57,4 @@ if [[ -a ~/.secrets ]] then
 fi
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+source /Users/pmorgan/.iterm2_shell_integration.zsh

@@ -4,3 +4,4 @@ abbr rlb Rails.logger.banner
 abbr rld Rails.logger.debug
 abbr pry! require 'pry'; binding.pry
 
+abbr putsd puts "[DEBUG] - " if debug

@@ -50,6 +50,9 @@ alias sr='source $yadr/zsh/shellvars.zsh'
 alias fe='vi $yadr/zsh/functions.zsh'
 alias fr='source $yadr/zsh/functions.zsh'
 
+# ssh config edit
+alias sshe='vi ~/.ssh/config'
+
 # Git Aliases
 alias gs='git status'
 alias gstsh='git stash'
@@ -182,3 +185,11 @@ alias gsd='/usr/local/git/get-shit-done/get-shit-done'
 alias work='sudo /usr/local/git/get-shit-done/get-shit-done.py work'
 alias play='sudo /usr/local/git/get-shit-done/get-shit-done.py play'
 
+alias rbjspp='pbpaste | js-beautify -i | pbcopy'
+
+
+alias vinew='vi *(.om[1])'
+alias vissh='vi ~/.ssh/config'
+
+alias pz='prompt zefram'
+alias gn='python ~/git/geeknote/geeknote/geeknote.py'

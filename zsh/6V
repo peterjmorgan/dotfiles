@@ -197,39 +197,9 @@ function test_web {
 }
 
 function qssh {
-    echo $1
-    sshpass -p "r(EX!cQW6V" ssh -oStrictHostKeyChecking=no Administrator@$1
+    sshpass -p '( sh Administrator@$1
 }
 
-function qscp {
-    sshpass -p "r(EX!cQW6V" scp -oStrictHostKeyChecking=no $2 Administrator@$1:
-}
-
-function qwssh {
-    echo $1
-    sshpass -p "vH5zse9oE=" ssh -oStrictHostKeyChecking=no Administrator@$1
-}
-
-function autoicarus {
-    autossh -M 20000 icarus
-}
-
-function rdp {
-    open rdp://Administrator:"r(EX!cQW6V"@$1
-}
-
-function daverdp {
-    open rdp://Administrator:"BeautyEssex7680"@$1
-}
-
-function zoom {
-    open "/Users/pmorgan/Library/Application Support/zoom.us/zoom.us.app"
-}
-
-function tmuxV {
-    tmux -L vimpry new-session -s vimpry
-}
-
-function tmuxN {
-    tmux new-session -s $1
+function q4ssh {
+    sshpass -p '' ssh Administrator@$1
 }
