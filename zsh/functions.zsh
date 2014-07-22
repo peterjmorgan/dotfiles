@@ -17,11 +17,11 @@ function efind0() {
 }
 
 function efind1() {
-    find -L . -type f -iname "*.$1" -maxdepth 1
+    find -L . -maxdepth 1 -type f -iname "*.$1"
 }
 
 function efind10() {
-    find -L . -type f -iname "*.$1" -maxdepth 1 -print0
+    find -L . -maxdepth 1 -type f -iname "*.$1" -print0
 }
 
 function qfind() {
@@ -41,11 +41,11 @@ function qfind0() {
 }
 
 function qfind1() {
-    find -L . -type f -iname "*$1*" -maxdepth 1
+    find -L . -maxdepth 1 -type f -iname "*$1*"
 }
 
 function qfind10() {
-    find -L . -type f -iname "*$1*" -maxdepth 1 -print0
+    find -L . -maxdepth 1 -type f -iname "*$1*" -print0
 }
 
 function mfind() {
