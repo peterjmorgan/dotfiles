@@ -233,3 +233,7 @@ function tmuxV {
 function tmuxN {
     tmux new-session -s $1
 }
+
+function gnc {
+    geeknote create --notebook "Action Pending" --title $1 --content WRITE
+}

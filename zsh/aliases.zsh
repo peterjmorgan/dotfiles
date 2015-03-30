@@ -192,4 +192,8 @@ alias vinew='vi *(.om[1])'
 alias vissh='vi ~/.ssh/config'
 
 alias pz='prompt zefram'
-alias gn='python ~/git/geeknote/geeknote/geeknote.py'
+alias gn='geeknote'
+
+alias push='python ~/git/pushbullet-cli/pushbullet.py'
+
+alias arc='/Users/pmorgan/git/arcanist/bin/arc'

@@ -142,7 +142,7 @@ class Object
         @file = "#{curtime}-#{rand(0x1000000).to_s(36)}"
         tf = Tempfile.new(@file)
         tf.open; tf.puts self; tf.rewind
-        runner.call("open -a \"0xED\" #{tf.path}")
+        runner.call("open -a \"/usr/bin/010editor\" #{tf.path}")
     end
     
     def interesting_methods

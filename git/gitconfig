@@ -98,7 +98,7 @@
 [core]
   autocrlf = false
   editor = vim
-  excludesfile = ~/.yadr/git/gitignore
+	excludesfile = /Users/pmorgan/.gitignore_global
 [advice]
   statusHints = false
 [diff]
@@ -113,3 +113,9 @@
 	email = pmorgan@jumptrading.com
 	namels = peterjmorgan@gmail.com
 	name = pmorgan
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
