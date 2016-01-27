@@ -146,8 +146,10 @@ class Object
     end
     
     def interesting_methods
-     (self.methods - Object.instance_methods).sort
+        (self.methods - Object.instance_methods).sort
     end
+
+    alias_method :im, :interesting_methods
 end # object
 
 class Array
