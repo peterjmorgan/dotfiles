@@ -1,3 +1,4 @@
+    Extra text here
      _     _           _
     | |   | |         | |
     | |___| |_____  __| | ____
@@ -127,6 +128,8 @@ Read more at the project's home page. Or just type `z` followed by a partial ref
 a recent directory to see how it works.
 
 ## Installation
+
+This is how to install
 
 Installation is automated via `rake` and the `yadr` command. To get
 started please run:
