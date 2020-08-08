@@ -1,7 +1,6 @@
 # Aliases in this file are bash and zsh compatible
 
 # Don't change. The following determines where YADR is installed.
-yadr=`find -L ~ -maxdepth 2 -type f -name .yadr | head | sed 's/\.yadr//'`
 
 # YADR support
 alias yav='yadr vim-add-plugin'
@@ -92,7 +91,7 @@ alias gplr='git pull --rebase'
 alias gps='git push'
 alias gpsh='git push'
 alias gnb='git nb' # new branch aka checkout -b
-alias grs='git reset' 
+alias grs='git reset'
 alias grsh='git reset --hard'
 alias gcln='git clean'
 alias gclndf='git clean -df'

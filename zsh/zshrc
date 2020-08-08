@@ -8,12 +8,17 @@
 
 # Don't change. The following determines where YADR is installed.
 
+function find_yadr() {
+  yadr=`fdfind -H .yadr | head | sed 's/\.yadr//'`
+  export yadr
+}
+
+
+
 autoload -U promptinit
 promptinit
 prompt adam1
-yadr=`find -L ~ -maxdepth 2 -type f -name .yadr | head | sed 's/\.yadr//'`
-export yadr
-#yadr="/Users/pmorgan/.dotfiles"
+find_yadr
 
 # Source oh-my-zsh if it is installed.
 # This shouldn't run
