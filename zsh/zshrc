@@ -9,7 +9,7 @@
 # Don't change. The following determines where YADR is installed.
 
 function find_yadr() {
-  yadr=`fdfind -H .yadr | head | sed 's/\.yadr//'`
+  yadr=`fdfind -H .yadr $HOME | head | sed 's/\.yadr//'`
   export yadr
 }
 
