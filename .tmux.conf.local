@@ -1,0 +1,18 @@
+tmux_conf_theme_left_separator_main='\uE0B0'
+tmux_conf_theme_left_separator_sub='\uE0B1'
+tmux_conf_theme_right_separator_main='\uE0B2'
+tmux_conf_theme_right_separator_sub='\uE0B3'
+
+setw -g mode-keys vi
+
+# copy to Piknik
+if -b 'command -v piknik > /dev/null 2>&1' 'bind y run -b "tmux save-buffer - | piknik -copy"'
+
+
+
+
+
+
+
+
+
