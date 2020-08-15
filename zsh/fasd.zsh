@@ -1,5 +1,6 @@
 # only init if installed.
-if [[ -f $HOME/.fasd ]]; then
+fasd=$(which fasd)
+if [[ -x $fasd ]]; then
   # Initialize fasd (https://github.com/clvv/fasd)
   eval "$(fasd --init posix-alias zsh-hook)"
 

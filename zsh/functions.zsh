@@ -222,10 +222,6 @@ function daverdp {
     open rdp://Administrator:"BeautyEssex7680"@$1
 }
 
-function zoom {
-    open "/Users/pmorgan/Library/Application Support/zoom.us/zoom.us.app"
-}
-
 function tmuxV {
     tmux -L vimpry new-session -s vimpry
 }
@@ -234,6 +230,3 @@ function tmuxN {
     tmux new-session -s $1
 }
 
-function gnc {
-    geeknote create --notebook "Action Pending" --title $1 --content WRITE
-}
