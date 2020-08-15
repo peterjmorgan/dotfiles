@@ -356,3 +356,6 @@
 [submodule ".tmux"]
 	path = .tmux
 	url = https://github.com/gpakosz/.tmux.git
+[submodule "vimrc"]
+	path = vimrc
+	url = https://github.com/peterjmorgan/vimrc.git
