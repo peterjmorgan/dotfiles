@@ -103,7 +103,7 @@ alias gt='git t'
 
 # Common shell functions
 alias less='less -r'
-alias tf='tail -f'
+#alias tf='tail -f'
 alias lh='ls -alt | head' # see the last modified files
 alias screen='TERM=screen screen'
 alias cl='clear'
@@ -167,32 +167,12 @@ alias quickconns="netstat -ant|awk '{print $NF}'|grep -v '[a-z]'|sort|uniq -c "
 
 alias pxmlp='pbpaste | xmllint --format - | pbcopy'
 
-# Apple Specific
-alias getip0='ipconfig getifaddr en0'
-alias getip1='ipconfig getifaddr en1'
-alias cgrep='grep --color=always'
-
-alias gocur='pushd .; cd $CUR'
-alias cdv='pushd .; cd ~/vaults'
-alias cdd='pushd .; cd ~/Downloads'
-
-# Routing aliases
-alias rlist='netstat -rn -f inet'
-
-alias gsd='/usr/local/git/get-shit-done/get-shit-done'
-
-alias work='sudo /usr/local/git/get-shit-done/get-shit-done.py work'
-alias play='sudo /usr/local/git/get-shit-done/get-shit-done.py play'
-
-alias rbjspp='pbpaste | js-beautify -i | pbcopy'
-
 
 alias vinew='vi *(.om[1])'
 alias vissh='vi ~/.ssh/config'
 
-alias pz='prompt zefram'
-alias gn='geeknote'
+alias fd='fdfind'
 
-alias push='python ~/git/pushbullet-cli/pushbullet.py'
-
-alias arc='/Users/pmorgan/git/arcanist/bin/arc'
+alias vagrant='/mnt/c/HashiCorp/Vagrant/bin/vagrant.exe'
+alias cmd='/mnt/c/Windows/system32/cmd.exe'
+alias powershell='/mnt/c/Windows/system32/WindowsPowerShell/v1.0/powershell.exe'

@@ -254,3 +254,20 @@ function fbrr() {
            fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
   git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
 }
+
+function rgv() {
+  rg --vimgrep $1 | vim -
+}
+
+# Tmux Attach using fzf
+function ta() {
+  selected=$(tmux ls | fzf --ansi)
+  echo "selected = $selected"
+  name=$(echo $selected | cut -d":" -f1)
+  echo "name = $name"
+  tmux a -t $name
+}
+
+function tl() {
+  tmux ls
+}
