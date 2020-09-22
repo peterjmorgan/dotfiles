@@ -20,7 +20,6 @@ alias cdb='cd -'
 alias df='df -h'
 alias ls='ls --color'
 alias ll='ls -alGh'
-alias du='du -h -d 2'
 alias l='ls -lh'
 
 # show me files matching "ls grep"
@@ -176,3 +175,5 @@ alias fd='fdfind'
 alias vagrant='/mnt/c/HashiCorp/Vagrant/bin/vagrant.exe'
 alias cmd='/mnt/c/Windows/system32/cmd.exe'
 alias powershell='/mnt/c/Windows/system32/WindowsPowerShell/v1.0/powershell.exe'
+alias explorer='/mnt/c/Windows/explorer.exe'
+alias notify-send='/mnt/c/Users/peter/bin/notify-send.exe'

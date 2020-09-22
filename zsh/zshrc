@@ -32,3 +32,12 @@ export PATH="/root/.local/bin:$PATH"
 #eval $(op signin petermorgan)
 
 #source /root/.config/broot/launcher/bash/br
+export PATH="$PATH:$HOME/.axiom/interact"
+source /root/.axiom/functions/autocomplete.zsh
+compdef _axiom-ssh axiom-rm
+compdef _axiom-ssh axiom-ssh
+compdef _axiom-ssh axiom-select
+compdef _axiom-ssh axiom-backup
+compdef _axiom-ssh axiom-vpn
+compdef _axiom-restore axiom-restore
+compdef _axiom-deploy axiom-deploy
