@@ -5,3 +5,7 @@ if [ -d /usr/local/go/bin ]; then
   export PATH=$PATH:/usr/local/go/bin
 fi
 
+if [ -d /mnt/c/Windows/system32 ]; then
+  export PATH=$PATH:/mnt/c/Windows/system32
+fi
+

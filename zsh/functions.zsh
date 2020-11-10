@@ -259,6 +259,11 @@ function rgv() {
   rg --vimgrep $1 | vim -
 }
 
+function tn() {
+  newname=$1
+  tmux new-session -s $1
+}
+
 # Tmux Attach using fzf
 function ta() {
   selected=$(tmux ls | fzf --ansi)
