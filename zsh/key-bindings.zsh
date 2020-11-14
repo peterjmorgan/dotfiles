@@ -7,12 +7,12 @@ bindkey -v                                          # Use vi key bindings
 bindkey '\ew' kill-region                           # [Esc-w] - Kill from the cursor to the mark
 bindkey -s '\el' 'ls -lhtr\n'                             # [Esc-l] - run command: ls
 bindkey -s '\e.' '..\n'                             # [Esc-.] - run command: .. (up directory)
-bindkey '^r' history-incremental-search-backward    # [Ctrl-r] - Search backward incrementally for a specified string. The string may begin with ^ to anchor the search to the beginning of the line.
+# bindkey '^r' history-incremental-search-backward    # [Ctrl-r] - Search backward incrementally for a specified string. The string may begin with ^ to anchor the search to the beginning of the line.
 bindkey '^[[5~' up-line-or-history                  # [PageUp] - Up a line of history
 bindkey '^[[6~' down-line-or-history                # [PageDown] - Down a line of history
 
-bindkey '^[[A' up-line-or-search                    # start typing + [Up-Arrow] - fuzzy find history forward
-bindkey '^[[B' down-line-or-search                  # start typing + [Down-Arrow] - fuzzy find history backward
+# bindkey '^[[A' up-line-or-search                    # start typing + [Up-Arrow] - fuzzy find history forward
+# bindkey '^[[B' down-line-or-search                  # start typing + [Down-Arrow] - fuzzy find history backward
 
 bindkey '^[[H' beginning-of-line                    # [Home] - Go to beginning of line
 bindkey '^[[1~' beginning-of-line                   # [Home] - Go to beginning of line

@@ -68,7 +68,7 @@ function emfind() {
     mdfind -name "\.$1"
 }
 
-function gs() { 
+function gs() {
     screencapture -i "$1.png"
 }
 
@@ -92,8 +92,8 @@ function routeadd() {
 #function routeclean() {
 #    route delete 209.160.65.6
 #    route delete imap.gmail.com
-#    route delete talk.google.com 
-#    route delete chat.facebook.com 
+#    route delete talk.google.com
+#    route delete chat.facebook.com
 #    route delete twitter.com
 #}
 
@@ -129,7 +129,7 @@ function rgem() {
 #}
 
 function whog() {
-  whois -h whois.geektools.com "$1" 
+  whois -h whois.geektools.com "$1"
 }
 
 function whoa() {
@@ -169,7 +169,7 @@ function addpaths {
       fi
   done
 }
-                
+
 function delpaths {
   for i in $*; do
     i=${~i}
@@ -236,4 +236,43 @@ function tmuxN {
 
 function gnc {
     geeknote create --notebook "Action Pending" --title $1 --content WRITE
+}
+
+# fbr - checkout git branch
+function fbrl() {
+  local branches branch
+  branches=$(git --no-pager branch -vv) &&
+  branch=$(echo "$branches" | fzf +m) &&
+  git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
+}
+
+# fbr - checkout git branch (including remote branches)
+function fbrr() {
+  local branches branch
+  branches=$(git branch --all | grep -v HEAD) &&
+  branch=$(echo "$branches" |
+           fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
+  git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+}
+
+function rgv() {
+  rg --vimgrep $1 | vim -
+}
+
+function tn() {
+  newname=$1
+  tmux new-session -s $1
+}
+
+# Tmux Attach using fzf
+function ta() {
+  selected=$(tmux ls | fzf --ansi)
+  echo "selected = $selected"
+  name=$(echo $selected | cut -d":" -f1)
+  echo "name = $name"
+  tmux a -t $name
+}
+
+function tl() {
+  tmux ls
 }
