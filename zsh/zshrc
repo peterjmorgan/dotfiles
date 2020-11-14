@@ -18,7 +18,8 @@ function find_yadr() {
 
 autoload -U promptinit
 promptinit
-prompt adam1
+#prompt adam1
+eval "$(starship init zsh)"
 find_yadr
 
 # Configuration
