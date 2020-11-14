@@ -1,3 +1,8 @@
+if [[ -v ZSH_DEBUG ]]; then
+    echo "Sourcing fzf_key-bindings.zsh"
+fi
+
+
 #     ____      ____
 #    / __/___  / __/
 #   / /_/_  / / /_

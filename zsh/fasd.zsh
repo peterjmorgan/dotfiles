@@ -1,4 +1,8 @@
 # only init if installed.
+if [[ -v ZSH_DEBUG ]]; then
+  echo "Sourcing fasd.zsh"
+fi
+#TODO: automatically touch .fasd
 if [[ -f $HOME/.fasd ]]; then
   # Initialize fasd (https://github.com/clvv/fasd)
   eval "$(fasd --init posix-alias zsh-hook)"

@@ -1,3 +1,7 @@
+if [[ -v ZSH_DEBUG ]]; then
+  echo "Sourcing git.zsh"
+fi
+
 # Speed up git completion
 # http://talkings.org/post/5236392664/zsh-and-slow-git-completion
 __git_files () {

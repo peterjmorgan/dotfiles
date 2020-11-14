@@ -1,3 +1,6 @@
+if [[ -v ZSH_DEBUG ]]; then
+  echo "Sourcing last-command.zsh"
+fi
 # Use Ctrl-x,Ctrl-l to get the output of the last command
 zmodload -i zsh/parameter
 insert-last-command-output() {

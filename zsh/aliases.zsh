@@ -1,16 +1,14 @@
+if [[ -v ZSH_DEBUG ]]; then
+    echo "Sourcing aliases.zsh"
+fi
+
 # Aliases in this file are bash and zsh compatible
 
 # Don't change. The following determines where YADR is installed.
 
-# YADR support
-alias yav='yadr vim-add-plugin'
-alias yuv='yadr vim-update-plugins'
-alias yip='yadr init-plugins'
-
 # PS
 alias psa="ps aux"
 alias psg="ps aux | grep "
-alias psr='ps aux | grep ruby'
 
 # Moving around
 alias ..='cd ..'

@@ -1,3 +1,7 @@
+if [[ -v ZSH_DEBUG ]]; then
+  echo "Sourcing functions.zsh"
+fi
+
 # ruby grep
 function rgrep() {
    find -L . -type f -name \*.rb -exec grep -n -i -H --color "$1" {} \;

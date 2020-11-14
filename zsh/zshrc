@@ -8,8 +8,11 @@
 
 # Don't change. The following determines where YADR is installed.
 
+unset ZSH_DEBUG
+#export ZSH_DEBUG=true
+
 function find_yadr() {
-  yadr=`fdfind -H .yadr $HOME | head | sed 's/\.yadr//'`
+  yadr=`fdfind -H .yadr $HOME | head | sed 's/\/\.yadr//'`
   export yadr
 }
 
@@ -19,7 +22,12 @@ prompt adam1
 find_yadr
 
 # Configuration
-for config_file ($yadr/zsh/*.zsh) source $config_file
+for config_file ($yadr/zsh/*.zsh) {
+  if [[ -v ZSH_DEBUG ]]; then
+      echo $config_file
+  fi
+  source $config_file
+}
 
 # Put secret configuration settings in ~/.secrets
 if [[ -a ~/.secrets ]] then

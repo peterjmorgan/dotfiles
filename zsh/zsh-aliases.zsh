@@ -1,3 +1,7 @@
+if [[ -v ZSH_DEBUG ]]; then
+  echo "Sourcing zsh-aliases.zsh"
+fi
+
 # Global aliases
 alias -g ...='../..'
 alias -g ....='../../..'
