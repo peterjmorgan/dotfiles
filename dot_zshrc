@@ -101,11 +101,15 @@ fi
 #
 # eval `dircolors ~/.dotfiles/etc/bliss.dircolors`
 #
-source /home/pmorgan/.local/share/phylum/zshrc
+if command -v phylum &>/dev/null; then
+	source /home/pmorgan/.local/share/phylum/zshrc
+fi
 #
-source /home/pmorgan/.config/broot/launcher/bash/br
+
+# TODO: fix this
+# source /home/pmorgan/.config/broot/launcher/bash/br
 #
 typeset -U PATH
 # zprof
 
-eval "$(atuin init zsh --disable-up-arrow)"
+# eval "$(atuin init zsh --disable-up-arrow)"
