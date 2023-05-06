@@ -24,23 +24,26 @@ alias l='ls -lh'
 alias lsg='ll | grep'
 
 # Alias Editing
-alias ae='nvim $location/etc/zsh/aliases.zsh' #alias edit
-alias ar='source $location/etc/zsh/aliases.zsh'  #alias reload
+alias ae='nvim $location/dot_zsh/aliases.zsh' #alias edit
+alias ar='source $location/dot_zsh/aliases.zsh'  #alias reload
 
 # vimrc editing
-alias ve='nvim ~/.vimrc'
+# TODO: fix this
+# alias ve='nvim ~/.vimrc'
 
 # zsh profile editing
-alias ze='nvim ~/.zshrc'
-alias zr='source ~/.zshrc'
+# alias ze='nvim ~/.zshrc'
+# alias zr='source ~/.zshrc'
+alias ze='nvim $location/dot_zshrc'
+alias zr='source $location/dot_zshrc'
 
 # shell var editing
-alias se='vi $location/etc/zsh/shellvars.zsh'
-alias sr='source $location/etc/zsh/shellvars.zsh'
+alias se='vi $location/dot_zsh/shellvars.zsh'
+alias sr='source $location/dot_zsh/shellvars.zsh'
 
 # functions editing
-alias fe='vi $location/etc/zsh/functions.zsh'
-alias fr='source $location/etc/zsh/functions.zsh'
+alias fe='vi $location/dot_zsh/functions.zsh'
+alias fr='source $location/dot_zsh/functions.zsh'
 
 # ssh config edit
 alias sshe='vi ~/.ssh/config'
