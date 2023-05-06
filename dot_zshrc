@@ -52,7 +52,11 @@ for config_file ($location/dot_zsh/*.zsh) {
 }
 
 # added by pipx (https://github.com/pipxproject/pipx)
-export EDITOR=nvim
+if command -v nvim &>/dev/null; then
+	export EDITOR=nvim
+else
+	export EDITOR=vim
+fi
 
 #eval $(op signin petermorgan)
 
