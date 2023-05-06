@@ -24,17 +24,17 @@ alias l='ls -lh'
 alias lsg='ll | grep'
 
 # Alias Editing
-alias ae='nvim $location/dot_zsh/aliases.zsh' #alias edit
+alias ae='$EDITOR $location/dot_zsh/aliases.zsh' #alias edit
 alias ar='source $location/dot_zsh/aliases.zsh'  #alias reload
 
 # vimrc editing
 # TODO: fix this
-# alias ve='nvim ~/.vimrc'
+# alias ve='$EDITOR ~/.vimrc'
 
 # zsh profile editing
-# alias ze='nvim ~/.zshrc'
+# alias ze='$EDITOR ~/.zshrc'
 # alias zr='source ~/.zshrc'
-alias ze='nvim $location/dot_zshrc'
+alias ze='$EDITOR $location/dot_zshrc'
 alias zr='source $location/dot_zshrc'
 
 # shell var editing
@@ -137,8 +137,8 @@ alias quickconns="netstat -ant|awk '{print $NF}'|grep -v '[a-z]'|sort|uniq -c "
 alias pxmlp='pbpaste | xmllint --format - | pbcopy'
 
 
-alias vinew='nvim *(.om[1])'
-alias vissh='nvim ~/.ssh/config'
+alias vinew='$EDITOR *(.om[1])'
+alias vissh='$EDITOR ~/.ssh/config'
 
 # alias fd='fdfind'
 
@@ -165,5 +165,5 @@ alias op='/mnt/c/Program\ Files/1Password\ CLI/op.exe'
 
 alias fdfind='fd'
 alias lg='lazygit'
-alias nv='nvim'
+alias nv='$EDITOR'
 alias timezsh='for i in $(seq 1 10); do time zsh -i -c exit; done'
