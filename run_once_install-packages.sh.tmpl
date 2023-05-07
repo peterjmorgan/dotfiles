@@ -1,5 +1,10 @@
 #!/bin/sh
 
+# setup gpakoz tmux
 ln -s -f ~/.tmux_runtime/.tmux.conf ~/.tmux.conf
 
+# install antigen for zsh
 curl -L git.io/antigen > ~/antigen.zsh
+
+# install just
+curl --proto '=https' --tlsv1.2 -sSf https://just.systems/install.sh | bash -s -- --to ~/.local/bin

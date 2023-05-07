@@ -13,18 +13,3 @@
     [".local/bin/age".filter]
         command = "tar"
         args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "age/age"]
-
-{{- $justVersion := "1.13.0" }}
-{{- $justArchOS := "x86_64-unknown-linux-musl" }}
-{{- if and (eq .chezmoi.os "linux") (eq .chezmoi.arch "amd64") }}
-  {{- $justArchOS := "x86_64-unknown-linux-musl" }}
-{{- else }}
-  {{- $justArchOS := "x86_64-unknown-linux-musl" }}
-{{- end }}
-[".local/bin/just"]
-	type = "file"
-	url = "https://github.com/casey/just/releases/download/v{{ $justVersion }}/just-v{{ $justVersion }}-{{ $justArchOS }}.tar.gz"
-	executable = true
-	[".local/bin/just".filter]
-		command = "tar"
-		args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "just"]
