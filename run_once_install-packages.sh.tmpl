@@ -7,7 +7,9 @@ ln -s -f ~/.tmux_runtime/.tmux.conf ~/.tmux.conf
 curl -L git.io/antigen > ~/antigen.zsh
 
 # install just
-curl --proto '=https' --tlsv1.2 -sSf https://just.systems/install.sh | bash -s -- --to ~/.local/bin
+if ! command -v just >/dev/null; then
+	curl --proto '=https' --tlsv1.2 -sSf https://just.systems/install.sh | bash -s -- --to ~/.local/bin
+fi
 
 # setup packer for nvim
 git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
