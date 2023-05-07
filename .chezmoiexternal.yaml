@@ -1,3 +1,7 @@
+{{- template "read-versions-and-revisions-cache" $cache -}}
+{{- $cache := dict "chezmoi" .chezmoi -}}
+
+
 ".local/bin/fzf":
   type: file
   url: "https://github.com/junegunn/fzf/releases/download/{{ template "get-github-latest-version" list "junegunn/fzf" $cache }}/fzf-{{ template "get-github-latest-version" list "junegunn/fzf" $cache }}-linux_{{ .chezmoi.arch }}.tar.gz"
