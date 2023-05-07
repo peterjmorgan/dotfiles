@@ -1,5 +1,5 @@
-{{- template "read-versions-and-revisions-cache" $cache -}}
-{{- $cache := dict "chezmoi" .chezmoi -}}
+# {{- template "read-versions-and-revisions-cache" $cache -}}
+# {{- $cache := dict "chezmoi" .chezmoi -}}
 
 [".tmux_runtime"]
     type = "archive"
