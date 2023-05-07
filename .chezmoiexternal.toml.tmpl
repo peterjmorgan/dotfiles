@@ -17,7 +17,7 @@
 {{- $justVersion := "1.13.0" }}
 [".local/bin/just"]
 	type = "file"
-	url = "https://github.com/casey/just/releases/download/v{{ $justVersion }}/just-v{{ $justVersion }}-{{ .chezmoi.os }}-{{ .chezmoi.arch }}.tar.gz"
+	url = "https://github.com/casey/just/releases/download/v{{ $justVersion }}/just-v{{ $justVersion }}-{{ .chezmoi.arch }}-{{ .chezmoi.os }}.tar.gz"
 	executable = true
 	[".local/bin/just".filter]
 		command = "tar"
