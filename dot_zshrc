@@ -117,3 +117,6 @@ typeset -U PATH
 # zprof
 
 # eval "$(atuin init zsh --disable-up-arrow)"
+source ~/antigen.zsh
+antigen init ~/.antigenrc
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
