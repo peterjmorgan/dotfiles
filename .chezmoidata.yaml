@@ -7,15 +7,15 @@ work:
   email: pete@phylum.com
   website: https://phylum.io
 languages:
-  bat: 0.22.1
+  bat: latest
   container-diff: 0.17.0
   exa: 0.10.1
-  golang: 1.21
-  goreleaser: 1.13.0
+  golang: latest
+  goreleaser: latest
   neovim: latest
   nodejs: lts
   python: latest
-  rust: nightly
+  rust: latest
   shellcheck: 0.8.0
   tmux: 3.3
 libraries:
@@ -41,26 +41,26 @@ libraries:
   python:
     installer: pip install -U
     global:
-      - Django
-      - PyGithub
-      - beautifulsoup4
-      - black
-      - devdeck
-      - devdeck-macos
-      - devdeck-slack
-      - dnspython
-      - flake8
-      - kazoo
-      - isort
-      - mkdocs
-      - nose
-      - pip
-      - poetry
-      - pynvim
-      - pyyaml
+      # - PyGithub
+      # - beautifulsoup4
+      # - black
+      # - devdeck
+      # - devdeck-macos
+      # - devdeck-slack
+      # - dnspython
+      # - flake8
+      # - kazoo
+      # - isort
+      # - mkdocs
+      # - nose
+      # - pip
+      # - poetry
+      # - pynvim
+      # - pyyaml
       - requests
+      - ipython
   ruby:
     installer: gem install
     global:
-      - bundler
-      - neovim
+      # - bundler
+      # - neovim
