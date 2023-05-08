@@ -25,7 +25,7 @@ antigen bundle zsh-users/zsh-completions
 # TODO: turning this off for now
 # antigen bundle b4b4r07/enhancd
 antigen bundle supercrabtree/k
-antigen bundle unixorn/fzf-zsh-plugin@main
+# antigen bundle unixorn/fzf-zsh-plugin@main
 
 # Load the theme.
 antigen theme romkatv/powerlevel10k
