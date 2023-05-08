@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -eufo pipefail
+
 asdf update >/dev/null 2>&1 || true && echo "~ asdf has been updated"
 
 echo "~ languages (installations)"
