@@ -4,7 +4,9 @@
 ln -s -f ~/.tmux_runtime/.tmux.conf ~/.tmux.conf
 
 # install antigen for zsh
-curl -L git.io/antigen > ~/antigen.zsh
+if [ ! -e "$HOME/antigen.sh" ]; then
+	curl -L git.io/antigen > ~/antigen.zsh
+fi
 
 # install just
 if ! command -v just >/dev/null; then
@@ -12,6 +14,6 @@ if ! command -v just >/dev/null; then
 fi
 
 # setup packer for nvim
-if [ ! -d "~/.local/share/nvim/site/pack/packer/start/" ]; then
+if [ ! -d "$HOME/.local/share/nvim/site/pack/packer/start/" ]; then
 	git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 fi
