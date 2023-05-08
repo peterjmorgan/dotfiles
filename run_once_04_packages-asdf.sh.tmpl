@@ -28,12 +28,12 @@ echo "~ languages (installations)"
   {{ $langLibMap := (get $.libraries .) }}
   {{ $installer := $langLibMap.installer }}
   {{ $libs := $langLibMap.global }}
-  {{- if $.langenv }}
-  	{{ $envLibs := get $langLibMap $.langenv }}
-  {{ end -}}
+  {{/*
+  {{ $envLibs := get $langLibMap $.langenv }}
   {{- if $envLibs }}
     {{ $libs = concat $libs $envLibs }}
   {{ end -}}
+  */}}
   {{ range sortAlpha $libs -}}
     {{ $installer }} {{ . }} >/dev/null 2>&1 || true && echo "~~~ {{ . }} is installed"
   {{ end -}}
