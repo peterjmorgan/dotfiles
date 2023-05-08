@@ -140,8 +140,6 @@ alias pxmlp='pbpaste | xmllint --format - | pbcopy'
 alias vinew='$EDITOR *(.om[1])'
 alias vissh='$EDITOR ~/.ssh/config'
 
-# alias fd='fdfind'
-
 alias vagrant='/mnt/c/HashiCorp/Vagrant/bin/vagrant.exe'
 alias cmd='/mnt/c/Windows/system32/cmd.exe'
 alias powershell='/mnt/c/Windows/system32/WindowsPowerShell/v1.0/powershell.exe'
@@ -163,7 +161,6 @@ alias phd="phylum -c $HOME/.config/phylum/petedemo-settings.yaml"
 alias ws='wormhole-william send'
 alias op='/mnt/c/Program\ Files/1Password\ CLI/op.exe'
 
-alias fdfind='fd'
 alias lg='lazygit'
 alias nv='$EDITOR'
 alias timezsh='for i in $(seq 1 10); do time zsh -i -c exit; done'

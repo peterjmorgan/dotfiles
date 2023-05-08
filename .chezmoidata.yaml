@@ -19,13 +19,13 @@ languages:
   shellcheck: 0.8.0
   tmux: 3.3
 libraries:
-  cargo:
-    installer: cargo install
-    # cargo install --features=pcre2 ripgrep
-    # Requires a custom flag
-    # TODO: Add generic flag support to my wonky installer?
-    global:
-      - git-cliff
+  # cargo:
+  #   installer: cargo install
+  #   # cargo install --features=pcre2 ripgrep
+  #   # Requires a custom flag
+  #   # TODO: Add generic flag support to my wonky installer?
+  #   global:
+  #     - git-cliff
   go:
     installer: go install
     global:
