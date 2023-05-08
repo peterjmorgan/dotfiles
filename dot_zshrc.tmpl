@@ -48,7 +48,7 @@ fi
 export location="$HOME/.local/share/chezmoi"
 
 # Configuration
-for config_file ($location/dot_zsh/*.zsh) {
+for config_file "$(location/dot_zsh/"*.zsh {
   if [[ -v ZSH_DEBUG ]]; then
       echo $config_file
   fi
@@ -81,11 +81,11 @@ if command -v zoxide &>/dev/null; then
 fi
 
 #pyenv
-if command -v pyenv &>/dev/null; then
-  export PYENV_ROOT="$HOME/.pyenv"
-  command -v pyenv &>/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-  eval "$(pyenv init -)"
-fi
+#if command -v pyenv &>/dev/null; then
+#  export PYENV_ROOT="$HOME/.pyenv"
+#  command -v pyenv &>/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+#  eval "$(pyenv init -)"
+#fi
 
 if [ -d ~/.local/bin ]; then
   export PATH="$HOME/.local/bin:$PATH"
@@ -114,13 +114,9 @@ if command -v phylum &>/dev/null; then
 fi
 #
 
-# TODO: fix this
-# source /home/pmorgan/.config/broot/launcher/bash/br
-#
-typeset -U PATH
 # zprof
 
 # eval "$(atuin init zsh --disable-up-arrow)"
-source ~/antigen.zsh
+source ~/.antigen.zsh
 antigen init ~/.antigenrc
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
