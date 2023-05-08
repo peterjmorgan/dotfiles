@@ -28,7 +28,9 @@ echo "~ languages (installations)"
   {{ $langLibMap := (get $.libraries .) }}
   {{ $installer := $langLibMap.installer }}
   {{ $libs := $langLibMap.global }}
-  {{ $envLibs := get $langLibMap $.langenv }}
+  {{- if $.langenv }}
+  	{{ $envLibs := get $langLibMap $.langenv }}
+  {{ end -}}
   {{- if $envLibs }}
     {{ $libs = concat $libs $envLibs }}
   {{ end -}}
