@@ -62,5 +62,5 @@ libraries:
   ruby:
     installer: gem install
     global:
-      # - bundler
+      - bundler
       # - neovim
