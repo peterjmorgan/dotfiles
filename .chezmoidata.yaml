@@ -7,17 +7,18 @@ work:
   email: pete@phylum.com
   website: https://phylum.io
 languages:
-  bat: latest
-  container-diff: 0.17.0
-  exa: 0.10.1
+  # bat: latest
+  # container-diff: 0.17.0
+  # exa: 0.10.1
   golang: latest
   goreleaser: latest
   neovim: latest
-  nodejs: lts
+  # nodejs: lts
   python: latest
-  rust: latest
-  shellcheck: 0.8.0
+  # rust: latest
+  # shellcheck: 0.8.0
   tmux: 3.3
+  1password-cli: latest
 libraries:
   # cargo:
   #   installer: cargo install
@@ -59,8 +60,8 @@ libraries:
       # - pyyaml
       - requests
       - ipython
-  ruby:
-    installer: gem install
-    global:
-      - bundler
-      # - neovim
+  # ruby:
+  #   installer: gem install
+  #   global:
+  #     - bundler
+  #     # - neovim
