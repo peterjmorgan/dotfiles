@@ -59,13 +59,6 @@ libraries:
       - pynvim
       - pyyaml
       - requests
-    home:
-      - beets
-      - pylast
-      - pyusb
-    work:
-      - ansible
-      - mkdocs-techdocs-core
   ruby:
     installer: gem install
     global:
