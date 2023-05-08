@@ -1,0 +1,73 @@
+name: Pete Morgan
+email: peterjmorgan@gmail.com
+social:
+  github: peterjmorgan
+  twitter: itspetemorgan
+work:
+  email: pete@phylum.com
+  website: https://phylum.io
+languages:
+  bat: 0.22.1
+  container-diff: 0.17.0
+  exa: 0.10.1
+  golang: 1.21
+  goreleaser: 1.13.0
+  neovim: latest
+  nodejs: lts
+  python: latest
+  rust: nightly
+  shellcheck: 0.8.0
+  tmux: 3.3
+libraries:
+  cargo:
+    installer: cargo install
+    # cargo install --features=pcre2 ripgrep
+    # Requires a custom flag
+    # TODO: Add generic flag support to my wonky installer?
+    global:
+      - git-cliff
+  go:
+    installer: go install
+    global:
+      - github.com/cweill/gotests/...@latest
+      - github.com/fatih/gomodifytags@latest
+      - github.com/go-delve/delve/cmd/dlv@latest
+      - github.com/mdempsky/gocode@latest
+      - github.com/segmentio/golines@latest
+      - github.com/x-motemen/gore/cmd/gore@latest
+      - golang.org/x/tools/cmd/goimports@latest
+      - golang.org/x/tools/cmd/guru@latest
+      - mvdan.cc/gofumpt@latest
+  python:
+    installer: pip install -U
+    global:
+      - Django
+      - PyGithub
+      - beautifulsoup4
+      - black
+      - devdeck
+      - devdeck-macos
+      - devdeck-slack
+      - dnspython
+      - flake8
+      - kazoo
+      - isort
+      - mkdocs
+      - nose
+      - pip
+      - poetry
+      - pynvim
+      - pyyaml
+      - requests
+    home:
+      - beets
+      - pylast
+      - pyusb
+    work:
+      - ansible
+      - mkdocs-techdocs-core
+  ruby:
+    installer: gem install
+    global:
+      - bundler
+      - neovim
