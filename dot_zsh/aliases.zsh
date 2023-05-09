@@ -163,6 +163,6 @@ alias nv='$EDITOR'
 alias timezsh='for i in $(seq 1 10); do time zsh -i -c exit; done'
 
 # chezmoi aliases
-alias chcd='chezmoi cd'
-alias chu='chezmoi update'
-alias chi='chezmoi init'
+alias cmcd='chezmoi cd'
+alias cmu='chezmoi update'
+alias cmi='chezmoi init'
