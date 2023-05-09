@@ -343,10 +343,16 @@ function qnmap() {
     nmap --min-rate=2500 -T5 -Pn $address
 }
 
-function pbp() {
-    xclip -out -selection clipboard
-}
+function cfzf() {
+  fzf_command=("fzf")
+  if [ -n "$1" ]; then
+    fzf_command=($fzf_command "--query=$1" "-1")
+  fi
 
-function goland() {
-    /mnt/c/Users/peter/AppData/Local/JetBrains/Toolbox/apps/Goland/ch-0/222.4345.24/bin/goland64.exe . &
+  file_path=$(chezmoi managed --include=files | ${fzf_command[@]})
+  if [ -z "$file_path" ]; then
+    >&2 echo "No file selected"
+  else
+    chezmoi edit --apply "$HOME/$file_path"
+  fi
 }
