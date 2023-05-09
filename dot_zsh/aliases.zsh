@@ -158,9 +158,6 @@ alias phs="phylum -c $HOME/.config/phylum/pete-staging-settings.yaml"
 # demo account - petedemo@phylum.io
 alias phd="phylum -c $HOME/.config/phylum/petedemo-settings.yaml"
 
-alias ws='wormhole-william send'
-alias op='/mnt/c/Program\ Files/1Password\ CLI/op.exe'
-
 alias lg='lazygit'
 alias nv='$EDITOR'
 alias timezsh='for i in $(seq 1 10); do time zsh -i -c exit; done'
