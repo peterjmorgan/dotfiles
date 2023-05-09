@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [[ ! $(command -v asdf) ]]; then
-  git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.9.0 >/dev/null 2>&1 || true && echo "~ asdf has been installed"
+  git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.11.3 >/dev/null 2>&1 || true && echo "~ asdf has been installed"
   echo "source ~/.asdf/asdf.sh" >> ~/.bashrc
   source ~/.bashrc
 fi
