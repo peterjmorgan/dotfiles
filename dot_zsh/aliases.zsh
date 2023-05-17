@@ -166,3 +166,9 @@ alias timezsh='for i in $(seq 1 10); do time zsh -i -c exit; done'
 alias cmcd='chezmoi cd'
 alias cmu='chezmoi update'
 alias cmi='chezmoi init'
+alias cm='chezmoi'
+
+# just aliases
+alias jf='just -f ~/.config/justfile'
+alias je='$EDITOR ~/.config/justfile'
+

@@ -2,8 +2,9 @@
 #   make gcc g++ python ruby openssl
 
 set export
-GOLANG_VERSION := "1.19.3"
-GOLANG_SHASUM := "74b9640724fd4e6bb0ed2a1bc44ae813a03f1e72a4c76253e2d5c015494430ba"
+# removing golang install in favor of asdf
+# GOLANG_VERSION := "1.19.3"
+# GOLANG_SHASUM := "74b9640724fd4e6bb0ed2a1bc44ae813a03f1e72a4c76253e2d5c015494430ba"
 
 default:
   @just -l
@@ -13,24 +14,10 @@ all: homebrew
   /bin/bash -c "$HOME/bin/just brew-bundle"
 
 
-# bootstrap with dotbot
-bootstrap:
-  ./bootstrap
-
-# run dotbot with default.yaml
-dotbot:
-  sh ./submodules/dotbot/bin/dotbot -c default.yaml
 
 # install rust via rustup
 install-rust:
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-
-install-go:
-  url="https://golang.org/dl/go${GOLANG_VERSION}.linux-amd64.tar.gz" && \
-  wget -O go.tgz -nv "$url" && \
-  echo "${GOLANG_SHASUM} *go.tgz" | sha256sum -c - && \
-  sudo tar -C /usr/local -xzf go.tgz && \
-  rm go.tgz
 
 # install homebrew
 homebrew:
@@ -46,31 +33,9 @@ brew-bundle:
 
 # setup shell
 shell:
-  # starship
-  curl -sS https://starship.rs/install.sh | sh -s -- -b $HOME/bin --yes
-  # resh
-  # curl -fsSL https://raw.githubusercontent.com/curusarn/resh/master/scripts/rawinstall.sh | bash
   # atuin
-  # bash <(curl https://raw.githubusercontent.com/ellie/atuin/main/install.sh)
+  bash -c "$(curl https://raw.githubusercontent.com/ellie/atuin/main/install.sh)"
 
-# install golang shell utils
-go-shell:
-  brew install gron viddy
-  go install github.com/psanford/wormhole-william@latest
-
-# install rust shell utils
-rust-shell:
-  #!/usr/bin/env bash
-  if hash brew 2>/dev/null; then
-    brew install bat exa fd ripgrep dust hexyl choose-rust watchexec
-  else
-    echo "brew needed"
-  fi
-
-# install onepassword-cli
-op:
-  curl -sLO https://downloads.1password.com/linux/debian/amd64/stable/1password-cli-amd64-latest.deb
-  sudo dpkg --install 1password-cli-amd64-latest.deb
 
 # install python3.x with pyenv
 python-setup:
@@ -83,6 +48,45 @@ python-setup:
 phylum:
 	curl https://sh.phylum.io/ | sh -s -- --yes
 
+# removed in favor of chezmoi
+# bootstrap with dotbot
+# bootstrap:
+#   ./bootstrap
+
+# removed in favor of chezmoi
+# # run dotbot with default.yaml
+# dotbot:
+#   sh ./submodules/dotbot/bin/dotbot -c default.yaml
+
+# moved to brew-bundle
+# install golang shell utils
+# go-shell:
+#   brew install gron viddy
+
+
+# moved this to brew-bundle
+# install rust shell utils
+# rust-shell:
+#   #!/usr/bin/env bash
+#   if hash brew 2>/dev/null; then
+#     brew install bat exa fd ripgrep dust hexyl choose-rust watchexec
+#   else
+#     echo "brew needed"
+#   fi
+
+# removed in favor of asdf
+# # install onepassword-cli
+# op:
+#   curl -sLO https://downloads.1password.com/linux/debian/amd64/stable/1password-cli-amd64-latest.deb
+#   sudo dpkg --install 1password-cli-amd64-latest.deb
+
+# removed in favor of asdf
+# install-go:
+#   url="https://golang.org/dl/go${GOLANG_VERSION}.linux-amd64.tar.gz" && \
+#   wget -O go.tgz -nv "$url" && \
+#   echo "${GOLANG_SHASUM} *go.tgz" | sha256sum -c - && \
+#   sudo tar -C /usr/local -xzf go.tgz && \
+#   rm go.tgz
 
 
 # formulae:
