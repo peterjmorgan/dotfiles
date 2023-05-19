@@ -18,6 +18,7 @@ brew "broot"          # new shake on 'tree'
 brew "zoxide"         # smarter cd, z jumping
 brew "tre-command"    # better tree command
 brew "lazygit"        # way better git UI
+brew "mosh" 		  # better ssh
 cask "1password-cli-beta"
 
 # fonts
