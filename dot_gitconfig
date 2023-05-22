@@ -117,4 +117,4 @@
 	name = pmorgan
 
 [url "git@github.com:"]
-	insteadOf = https://github
+	insteadOf = https://github.com
