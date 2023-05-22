@@ -1,7 +1,7 @@
 # brew "curl"           # replaced wget with curl because wget is old and slow
+# brew "magic-wormhole" # easy PAKE-based file transfer
 brew "gron"           # grep json easily
 brew "viddy"          # modern watch command
-brew "magic-wormhole" # easy PAKE-based file transfer
 brew "tig"            # git tui client
 brew "bat"            # cat replacement
 brew "exa"            # ls replacement
@@ -19,7 +19,7 @@ brew "zoxide"         # smarter cd, z jumping
 brew "tre-command"    # better tree command
 brew "lazygit"        # way better git UI
 brew "mosh" 		  # better ssh
-# cask "1password-cli-beta"
+brew "jq" 			  # json parsing
 
 # fonts
 tap "homebrew/cask-fonts"
