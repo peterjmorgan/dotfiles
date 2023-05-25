@@ -55,12 +55,6 @@ for config_file ("${location}/dot_zsh/"*.zsh) {
   source $config_file
 }
 
-# added by pipx (https://github.com/pipxproject/pipx)
-if command -v nvim &>/dev/null; then
-	export EDITOR=nvim
-else
-	export EDITOR=vim
-fi
 
 #eval $(op signin petermorgan)
 
@@ -119,4 +113,11 @@ fi
 # eval "$(atuin init zsh --disable-up-arrow)"
 source ~/antigen.zsh
 antigen init ~/.antigenrc
+
+# now set the editor, as nvim is installed via asdf, which is a plugin in antigen
+if command -v nvim &>/dev/null; then
+	export EDITOR=nvim
+else
+	export EDITOR=vim
+fi
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
