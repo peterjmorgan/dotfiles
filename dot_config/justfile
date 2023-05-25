@@ -10,25 +10,21 @@ default:
   @just -l
   @just --choose
 
-all: homebrew
-  /bin/bash -c "$HOME/bin/just brew-bundle"
-
-
 
 # install rust via rustup
 install-rust:
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 # install homebrew
-homebrew:
+install-homebrew:
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> $HOME/.profile
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+  brew tap homebrew/bundle
 
 
 # install homebrew utils via Brewfile
 brew-bundle:
-  brew tap homebrew/bundle
   brew bundle --file=Brewfile --no-lock
 
 # setup shell
