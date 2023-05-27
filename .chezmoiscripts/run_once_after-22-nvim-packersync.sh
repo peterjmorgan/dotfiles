@@ -1,3 +1,3 @@
 #!/bin/bash
 
-nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+# HOME/.asdf/nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
