@@ -18,7 +18,7 @@ then
 	tmux select-pane -t 1
 	#PROCESS=$(get_container processor)
 	#tmux send-keys "echo \"process = $PROCESS\""
-	tmux send-keys "bash packages-asdf.sh" C-m
+	tmux send-keys "bash $HOME/packages-asdf.sh" C-m
 
 	# pane 2 = tailscale
 	tmux select-pane -t 2 -T 'tailscale'
