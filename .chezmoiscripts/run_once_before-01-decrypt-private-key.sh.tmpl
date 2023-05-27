@@ -3,9 +3,9 @@
 export PATH="$PATH:/home/$USER/bin"
 KEY="/home/$USER/key.txt"
 
-if [ ! -f "/home/pmorgan/key.txt" ]; then
-    age --decrypt --output "/home/pmorgan/key.txt" "{{ .chezmoi.sourceDir }}/key.txt.age"
-    chmod 600 "/home/pmorgan/key.txt"
+if [ ! -f $KEY ]; then
+    age --decrypt --output $KEY "{{ .chezmoi.sourceDir }}/key.txt.age"
+    chmod 600 $KEY
 fi
 
 #if [ ! -f "/home/pmorgan/key.txt" ]; then
