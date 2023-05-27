@@ -1,8 +1,14 @@
 #!/bin/sh
 
-export PATH="$PATH:/home/pmorgan/bin"
+export PATH="$PATH:/home/$USER/bin"
+KEY="/home/$USER/key.txt"
 
 if [ ! -f "/home/pmorgan/key.txt" ]; then
     age --decrypt --output "/home/pmorgan/key.txt" "{{ .chezmoi.sourceDir }}/key.txt.age"
     chmod 600 "/home/pmorgan/key.txt"
 fi
+
+#if [ ! -f "/home/pmorgan/key.txt" ]; then
+#    age --decrypt --output "/home/pmorgan/key.txt" "{{ .chezmoi.sourceDir }}/key.txt.age"
+#    chmod 600 "/home/pmorgan/key.txt"
+#fi
