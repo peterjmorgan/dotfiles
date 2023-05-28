@@ -15,8 +15,7 @@ if ! command -v just >/dev/null; then
 	curl --proto '=https' --tlsv1.2 -sSf https://just.systems/install.sh | bash -s -- --to ~/.local/bin
 fi
 
-# try moving to .chezmoiscripts
 # setup packer for nvim
-#if [ ! -d "$HOME/.local/share/nvim/site/pack/packer/start/" ]; then
-#	git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-#fi
+if [ ! -d "$HOME/.local/share/nvim/site/pack/packer/start/" ]; then
+	git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+fi
