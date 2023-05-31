@@ -160,6 +160,7 @@ vim.cmd([[
 vim.o.background = "dark"
 
 vim.keymap.set("i", "jj", "<Esc>")
+vim.keymap.set("n", "<C-q>", ":q<CR>", {noremap = true, silent = true})
 
 vim.opt.guicursor = "i:block"
 vim.opt.tabstop = 4
