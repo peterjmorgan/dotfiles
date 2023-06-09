@@ -206,7 +206,7 @@ function daverdp {
     open rdp://Administrator:"BeautyEssex7680"@$1
 }
 
-# fbr - checkout git branch
+# fbrl - checkout local git branch
 function fbrl() {
   local branches branch
   branches=$(git --no-pager branch -vv) &&
@@ -214,13 +214,29 @@ function fbrl() {
   git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
 }
 
-# fbr - checkout git branch (including remote branches)
+# fbr - checkout remote git branch
 function fbrr() {
   local branches branch
   branches=$(git branch --all | grep -v HEAD) &&
   branch=$(echo "$branches" |
            fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
   git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+}
+
+# onepassword-cli
+function opauth() {
+	eval $(op signin)
+}
+
+function opf() {
+	local listing
+	selected=$(op item list | fzf --ansi)
+	title=$(echo $selected | choose 0)
+	op item get $title
+}
+
+function opw() {
+	op.exe "$@"
 }
 
 
@@ -242,7 +258,7 @@ function ta() {
 }
 
 function tl() {
-  tmux ls
+  tmux-table
 }
 
 function wsl-display () {
@@ -279,13 +295,13 @@ function winkill() {
 }
 
 #TODO: consider moving this to a host specific config
-function git() {
-  if [[ $(pwd -P) = /mnt/* ]]; then
-    git.exe "$@"
-  else
-    command git "$@"
-  fi
-}
+# function git() {
+#   if [[ $(pwd -P) = /mnt/* ]]; then
+#     git.exe "$@"
+#   else
+#     command git "$@"
+#   fi
+# }
 
 # ripgrep functions
 function rgip() {
@@ -364,3 +380,4 @@ function casks() {
     fzf --multi --preview="curl https://formulae.brew.sh/api/cask/{}.json | jq '.'" |
     xargs brew install --cask
 }
+

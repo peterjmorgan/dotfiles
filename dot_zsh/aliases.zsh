@@ -42,7 +42,7 @@ alias se='vi $location/dot_zsh/shellvars.zsh'
 alias sr='source $location/dot_zsh/shellvars.zsh'
 
 # functions editing
-alias fe='vi $location/dot_zsh/functions.zsh'
+alias fe='$EDITOR $location/dot_zsh/functions.zsh'
 alias fr='source $location/dot_zsh/functions.zsh'
 
 # ssh config edit

@@ -64,25 +64,9 @@ for config_file ("${location}/dot_zsh/"*.zsh) {
 export BREW_HOME="/home/linuxbrew/.linuxbrew/bin"
 export PATH="$PATH:$BREW_HOME"
 
-# # starship - REMOVED for powerlevel10k
-# if command -v starship &>/dev/null; then
-#   eval "$(starship init zsh)"
-# fi
-
 #zoxide
 if command -v zoxide &>/dev/null; then
   eval "$(zoxide init zsh)"
-fi
-
-#pyenv
-#if command -v pyenv &>/dev/null; then
-#  export PYENV_ROOT="$HOME/.pyenv"
-#  command -v pyenv &>/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-#  eval "$(pyenv init -)"
-#fi
-
-if [ -d ~/.local/bin ]; then
-  export PATH="$HOME/.local/bin:$PATH"
 fi
 
 if [ -d ~/go ]; then
@@ -98,9 +82,6 @@ if command -v direnv &>/dev/null; then
   eval "$(direnv hook zsh)"
 fi
 
-# SLow!
-# [ -f ~/.resh/shellrc ] && source ~/.resh/shellrc # this line was added by RESH (Rich Enchanced Shell History)
-#
 # eval `dircolors ~/.dotfiles/etc/bliss.dircolors`
 #
 if command -v phylum &>/dev/null; then
