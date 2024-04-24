@@ -381,3 +381,12 @@ function casks() {
     xargs brew install --cask
 }
 
+function rgext() {
+	rg -i "\"$1\"" medusa_scan.json
+}
+
+function rgfext() {
+	rg -i "\"$1\"" medusa_scan.json > $1.jsonl
+	wc -l $1.jsonl
+}
+
