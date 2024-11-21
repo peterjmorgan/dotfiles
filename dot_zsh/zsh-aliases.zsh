@@ -12,6 +12,7 @@ alias -g L="| less"
 alias -g N="| /dev/null"
 alias -g S='| sort'
 alias -g G='| rg -i'
+alias -g F='| fgrep -i'
 alias -g CG='|cgrep -i'
 alias -g PG='|pcregrep -i'
 alias -g PGV='|pcregrep -i -v'
