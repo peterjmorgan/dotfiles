@@ -16,9 +16,16 @@ alias cdb='cd -'
 
 # Show human friendly numbers and colors
 alias df='df -h'
-alias ls='ls --color'
-alias ll='ls -alGh'
-alias l='ls -lh'
+# alias ls='ls --color'
+# alias ll='ls -alGh'
+alias l='eza -l --sort=modified'
+alias ls='eza -l'
+alias ld='eza -lD'
+alias lf='eza -lf --color=always | grep -v /'
+alias lh='eza -dl .* --group-directories-first'
+alias ll='eza -al --group-directories-first'
+alias ls='eza -al --color=always --sort=size | grep -v /'
+alias lt='eza -al --sort=modified'
 
 # show me files matching "ls grep"
 alias lsg='ll | grep'
@@ -49,6 +56,7 @@ alias fr='source $location/dot_zsh/functions.zsh'
 alias sshe='vi ~/.ssh/config'
 
 # Git Aliases
+alias git='/home/linuxbrew/.linuxbrew/bin/git'
 alias gs='git status'
 alias gstsh='git stash'
 alias gst='git stash'
@@ -102,14 +110,15 @@ alias less='less -r'
 alias lh='ls -alt | head' # see the last modified files
 alias screen='TERM=screen screen'
 alias cl='clear'
+alias tail='tail ---disable-inotify'
 
 # Zippin
-alias gz='tar -zcvf'
-
-alias ka9='killall -9'
-alias k9='kill -9'
-alias pk='pkill'
-alias pk9='pkill -9'
+# alias gz='tar -zcvf'
+#
+# alias ka9='killall -9'
+# alias k9='kill -9'
+# alias pk='pkill'
+# alias pk9='pkill -9'
 
 
 # Forward port 80 to 3000
@@ -127,9 +136,9 @@ alias showpath="echo $PATH | tr ':' '\n'"
 alias rscp='rsync -aP --stats --no-whole-file --inplace'
 alias rsmv='rscp --remove-source-files'
 
-alias rebin='chmod -R u+x ~/bin'
-alias gsc='screencapture -ic'
-alias qsl='qs *(.om[1])'
+# alias rebin='chmod -R u+x ~/bin'
+# alias gsc='screencapture -ic'
+# alias qsl='qs *(.om[1])'
 
 alias extip='curl -s checkip.dyndns.org PGIP'
 alias quickconns="netstat -ant|awk '{print $NF}'|grep -v '[a-z]'|sort|uniq -c "
@@ -146,17 +155,17 @@ alias powershell='/mnt/c/Windows/system32/WindowsPowerShell/v1.0/powershell.exe'
 alias explorer='/mnt/c/Windows/explorer.exe'
 alias notify-send='/mnt/c/Users/peter/bin/notify-send.exe'
 alias subl='/mnt/c/Program\ Files/Sublime\ Text/sublime_text.exe'
-alias code='/mnt/c/Users/peter/AppData/Local/Programs/Microsoft\ VS\ Code/bin/code'
+#alias code='/mnt/c/Users/peter/AppData/Local/Programs/Microsoft\ VS\ Code/bin/code'
 alias open='wsl-open'
 
 alias cdtmp='cd `mktemp -d /tmp/play-XXXX`'
 
-# Phylum aliases
-alias ph='phylum'
-# staging - peter@phylum.io
-alias phs="phylum -c $HOME/.config/phylum/pete-staging-settings.yaml"
-# demo account - petedemo@phylum.io
-alias phd="phylum -c $HOME/.config/phylum/petedemo-settings.yaml"
+# # Phylum aliases
+# alias ph='phylum'
+# # staging - peter@phylum.io
+# alias phs="phylum -c $HOME/.config/phylum/pete-staging-settings.yaml"
+# # demo account - petedemo@phylum.io
+# alias phd="phylum -c $HOME/.config/phylum/petedemo-settings.yaml"
 
 alias lg='lazygit'
 alias nv='$EDITOR'
@@ -172,3 +181,7 @@ alias cm='chezmoi'
 alias jf='just -f ~/.config/justfile'
 alias je='$EDITOR ~/.config/justfile'
 
+# alias rhysd='/home/pmorgan/projects/halcyon/rhysida_decryptor/target/release/rhysida_decryptor'
+# alias pyrh='/home/pmorgan/win-projects/rhysida-jsonl_to_key_verifier/rhysida-jsonl_to_key-verifier.py'
+alias ct='cracktool'
+# alias pycdas='/home/pmorgan/win-projects/playground/pycdc/pycdas'
