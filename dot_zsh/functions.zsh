@@ -381,3 +381,33 @@ function casks() {
     xargs brew install --cask
 }
 
+function tslog() {
+    # Capture the input glob pattern
+    local pattern="$1"
+
+    # Use parameter expansion to ensure the pattern is not empty
+    if [[ -z "$pattern" ]]; then
+        echo "Usage: tail_recent_file <pattern>"
+        return 1
+    fi
+
+    # Find the most recently updated file matching the pattern
+    local found_file=$(ls -t log-*$pattern*(om[1]) 2>/dev/null)
+
+    # Check if a file was found
+    if [[ -z "$found_file" ]]; then
+        echo "No file found matching the pattern: $pattern"
+        return 1
+    fi
+
+    # Run tspin with tail on the found file
+    tspin -c "tail ---disable-inotify -f $found_file"
+}
+
+function pbcopy() {
+	tee <&0 | clip.exe
+}
+
+function pbpaste() {
+	powershell.exe Get-Clipboard | sed 's/\r$//' | sed -z '$ s/\n$//'
+}
