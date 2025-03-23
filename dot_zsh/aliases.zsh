@@ -56,7 +56,7 @@ alias fr='source $location/dot_zsh/functions.zsh'
 alias sshe='vi ~/.ssh/config'
 
 # Git Aliases
-alias git='/home/linuxbrew/.linuxbrew/bin/git'
+# alias git='/home/linuxbrew/.linuxbrew/bin/git'
 alias gs='git status'
 alias gstsh='git stash'
 alias gst='git stash'
