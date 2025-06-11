@@ -6,9 +6,9 @@ set -eufo pipefail
 ln -s -f ~/.tmux_runtime/.tmux.conf ~/.tmux.conf
 
 # install antigen for zsh
-# if [ ! -e "$HOME/antigen.sh" ]; then
-	# curl -L git.io/antigen > ~/antigen.zsh
-# fi
+if [ ! -e "$HOME/antigen.sh" ]; then
+	curl -L git.io/antigen > ~/antigen.zsh
+fi
 
 # install just
 if ! command -v just >/dev/null; then
