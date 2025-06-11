@@ -412,3 +412,14 @@ function pbpaste() {
 	powershell.exe Get-Clipboard | sed 's/\r$//' | sed -z '$ s/\n$//'
 }
 
+function f() {
+    local dir
+    dir=$(find ${1:-.} -type d 2>/dev/null | fzf) && cd "$dir"
+}
+
+function start_ssh_agent() {
+    # Start the ssh-agent and evaluate its output
+    eval "$(ssh-agent -s)"
+    # Add your SSH key
+    ssh-add ~/.ssh/peterjmorgan@gmail.com_github_rsa
+}
