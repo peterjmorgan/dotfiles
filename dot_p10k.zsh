@@ -562,6 +562,7 @@
   # typeset -g POWERLEVEL9K_DIRENV_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
   ###############[ asdf: asdf version manager (https://github.com/asdf-vm/asdf) ]###############
+  # Note: This configuration also works with mise (https://mise.jdx.dev/), which is a drop-in replacement for asdf
   # Default asdf color. Only used to display tools for which there is no color override (see below).
   # Tip:  Override this parameter for ${TOOL} with POWERLEVEL9K_ASDF_${TOOL}_FOREGROUND.
   typeset -g POWERLEVEL9K_ASDF_FOREGROUND=6

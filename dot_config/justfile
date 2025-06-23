@@ -2,7 +2,7 @@
 #   make gcc g++ python ruby openssl
 
 set export
-# removing golang install in favor of asdf
+# removing golang install in favor of mise
 # GOLANG_VERSION := "1.19.3"
 # GOLANG_SHASUM := "74b9640724fd4e6bb0ed2a1bc44ae813a03f1e72a4c76253e2d5c015494430ba"
 
@@ -70,13 +70,13 @@ phylum:
 #     echo "brew needed"
 #   fi
 
-# removed in favor of asdf
+# removed in favor of mise
 # # install onepassword-cli
 # op:
 #   curl -sLO https://downloads.1password.com/linux/debian/amd64/stable/1password-cli-amd64-latest.deb
 #   sudo dpkg --install 1password-cli-amd64-latest.deb
 
-# removed in favor of asdf
+# removed in favor of mise
 # install-go:
 #   url="https://golang.org/dl/go${GOLANG_VERSION}.linux-amd64.tar.gz" && \
 #   wget -O go.tgz -nv "$url" && \

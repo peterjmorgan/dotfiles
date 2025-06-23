@@ -2,7 +2,7 @@
 
 set -eufo pipefail
 
-$HOME/.asdf/bin/asdf update >/dev/null 2>&1 || true && echo "~ asdf has been updated"
+mise self-update >/dev/null 2>&1 || true && echo "~ mise has been updated"
 
 echo "~ languages (installations)"
 
@@ -17,9 +17,8 @@ echo "~ languages (installations)"
     # which is parsed internally as "invalid" weirdly
     # I use this to cut down the install time by skipping languages
     # I only use at home and vice versa
-    $HOME/.asdf/bin/asdf plugin-add {{ . }} >/dev/null 2>&1 || true
-    $HOME/.asdf/bin/asdf install {{ . }} {{ $version }} >/dev/null 2>&1 || true && echo "~~ {{ . }} {{ $version }} is installed"
-    $HOME/.asdf/bin/asdf global {{ . }} {{ $version }} >/dev/null 2>&1 || true
+    mise install {{ . }}@{{ $version }} >/dev/null 2>&1 || true && echo "~~ {{ . }} {{ $version }} is installed"
+    mise use {{ . }}@{{ $version }} --global >/dev/null 2>&1 || true
   {{ end -}}
 {{ end -}}
 

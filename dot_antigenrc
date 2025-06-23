@@ -16,7 +16,8 @@ antigen bundle docker
 antigen bundle colorize
 antigen bundle magic-enter
 antigen bundle safe-paste
-# antigen bundle asdf
+# antigen bundle asdf  # replaced with mise
+antigen bundle jdx/mise
 
 # Additional bundles
 antigen bundle zsh-users/zsh-syntax-highlighting

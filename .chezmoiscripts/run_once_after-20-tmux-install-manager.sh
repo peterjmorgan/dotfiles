@@ -13,12 +13,12 @@
 #	# tmux split-window -t $SESSION:1 -v
 #	tmux select-layout 'even-vertical'
 #
-#	# pane 1 = tailscaled
-#	tmux select-pane -t 1 -T 'asdf packages'
+#	# pane 1 = mise packages
+#	tmux select-pane -t 1 -T 'mise packages'
 #	tmux select-pane -t 1
 #	#PROCESS=$(get_container processor)
 #	#tmux send-keys "echo \"process = $PROCESS\""
-#	tmux send-keys "bash $HOME/packages-asdf.sh" C-m
+#	tmux send-keys "bash $HOME/packages-mise.sh" C-m
 #
 #	# pane 2 = tailscale
 #	tmux select-pane -t 2 -T 'tailscale'
