@@ -18,6 +18,7 @@ antigen bundle magic-enter
 antigen bundle safe-paste
 # antigen bundle asdf  # replaced with mise
 antigen bundle jdx/mise
+antigen bundle astral-sh/uv
 
 # Additional bundles
 antigen bundle zsh-users/zsh-syntax-highlighting

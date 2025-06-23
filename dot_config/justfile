@@ -33,12 +33,9 @@ shell:
   bash -c "$(curl https://raw.githubusercontent.com/ellie/atuin/main/install.sh)"
 
 
-# install python3.x with pyenv
-python-setup:
-  # brew install pyenv make openssl gcc
-  # TODO: Ubuntu-linux specific for WSL. Need to refactor this into OS-specific handlers
-  sudo apt install gcc g++ openssl make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
-  pyenv install $(pyenv install -l | grep -v - | tr -d ' ' | grep '^3' | tail -1) && pyenv rehash
+# install uv for Python management
+uv-setup:
+  curl -LsSf https://astral.sh/uv/install.sh | sh
 
 # install phylum CLI latest
 phylum:

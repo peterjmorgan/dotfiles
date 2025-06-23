@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Install chezmoi
-RUN sh -c "$(curl -fsLS https://www.chezmoi.io/get)" -- init --apply peterjmorgan
+RUN sh -c "$(curl -fsLS https://www.chezmoi.io/get)" -- -b /usr/local/bin
 
 # Set default shell to zsh
 RUN chsh -s /bin/zsh root

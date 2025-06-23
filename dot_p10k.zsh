@@ -935,6 +935,7 @@
   # typeset -g POWERLEVEL9K_ANACONDA_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
   ################[ pyenv: python environment (https://github.com/pyenv/pyenv) ]################
+  # Note: This configuration also works with uv (https://uv.pypa.io/), which is a modern Python package manager
   # Pyenv color.
   typeset -g POWERLEVEL9K_PYENV_FOREGROUND=6
   # Hide python version if it doesn't come from one of these sources.
