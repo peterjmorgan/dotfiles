@@ -1,6 +1,8 @@
 {{ if stat (joinPath .chezmoi.homeDir "key.txt") -}}
-encryption = "age"
+encryption = "age" 
 [age]
     identity = "~/key.txt"
     recipient = "age17tqhxgwfzumxy4a7sgg70hghnqclsc3yamhdyqy02wyrxtfyavtspxuxq6"
+{{ else -}}
+# DEBUG: No key found - age encryption disabled
 {{ end -}}
