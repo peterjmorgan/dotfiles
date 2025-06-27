@@ -1,9 +1,11 @@
 key.txt.age
 {{ if not (stat (joinPath .chezmoi.homeDir "key.txt")) -}}
-# When key.txt doesn't exist, ignore all encrypted files to prevent encryption errors
+# DEBUG: Key doesn't exist - ignoring all encrypted files 
 private_dot_ssh/encrypted_config.age
 private_dot_ssh/encrypted_private_id_ecdsa.age  
 private_dot_ssh/encrypted_private_digitalocean.age
 private_dot_ssh/encrypted_private_peterjmorgan@gmail.com_github_rsa.age
 encrypted_literal_run_once_03_setup_op.sh.tmpl.literal.age
+{{ else -}}
+# DEBUG: Key exists - processing encrypted files normally
 {{ end -}} 
