@@ -13,7 +13,7 @@ languages:
   golang: latest
   goreleaser: latest
   neovim: latest
-  # nodejs: lts
+  nodejs: latest
   # python: latest
   # rust: latest
   # shellcheck: 0.8.0
@@ -24,6 +24,10 @@ tools:
     installer: uv tool install
     global:
       - llm
+  npm:
+    installer: npm install -g
+    global:
+      - "@anthropic-ai/claude-dev"
 libraries:
   # cargo:
   #   installer: cargo install

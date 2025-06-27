@@ -62,6 +62,7 @@ test_command "uv tool list works" "uv tool list" ""
 echo -e "\n${YELLOW}🛠️  Testing mise-managed languages${NC}"
 test_command "golang installed" "mise list golang" "golang"
 test_command "neovim installed" "mise list neovim" "neovim" 
+test_command "nodejs installed" "mise list nodejs" "nodejs"
 test_command "tmux installed" "mise list tmux" "tmux"
 test_command "1password-cli installed" "mise list 1password-cli" "1password-cli"
 
@@ -70,10 +71,17 @@ echo -e "\n${YELLOW}📚 Testing uv-managed tools${NC}"
 test_command "llm tool installed" "uv tool list" "llm"
 test_command "ipython tool installed" "uv tool list" "ipython"
 
+# Test 4b: Check if npm tools were installed
+echo -e "\n${YELLOW}📦 Testing npm-managed tools${NC}"
+test_command "npm command accessible" "command -v npm" "npm"
+test_command "claude-dev installed globally" "npm list -g @anthropic-ai/claude-dev" "@anthropic-ai/claude-dev" || true
+
 # Test 5: Check if tools are actually executable
 echo -e "\n${YELLOW}⚡ Testing tool executability${NC}"
 test_command "golang executable" "mise exec golang@latest -- go version" "go version"
 test_command "neovim executable" "mise exec neovim@latest -- nvim --version" "NVIM"
+test_command "nodejs executable" "mise exec nodejs@latest -- node --version" "v"
+test_command "npm executable" "mise exec nodejs@latest -- npm --version" "" 
 test_command "tmux executable" "mise exec tmux@3.3 -- tmux -V" "tmux"
 test_command "1password-cli executable" "mise exec 1password-cli@latest -- op --version" ""
 test_command "llm command accessible" "llm --version" "llm" || true  # May fail due to setup

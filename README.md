@@ -20,6 +20,7 @@ chezmoi init --apply https://github.com/peterjmorgan/dotfiles-peterjmorgan.git
 - **Terminal**: tmux configuration with custom settings
 - **Security**: 1Password CLI integration with encrypted SSH keys
 - **Languages**: Go, Python, Node.js (via mise)
+- **Node.js Tools**: Claude Code for AI-assisted development
 - **Utilities**: fzf, ripgrep, bat, and more
 
 ## 🗂️ Project Structure & File Operations
@@ -86,8 +87,9 @@ All `dot_*` files and directories are processed and installed to their target lo
 - Adds uv to PATH
 
 #### Step 3c: Install Development Tools
-- **Languages**: golang, neovim, tmux, 1password-cli (via mise)
+- **Languages**: golang, nodejs, neovim, tmux, 1password-cli (via mise)
 - **Python Tools**: llm, ipython (via uv tool install)
+- **Node.js Tools**: @anthropic-ai/claude-dev (via npm install -g)
 - **System Tools**: age, just, packer.nvim
 
 ### 4. Template Processing
@@ -120,12 +122,13 @@ Templates (`.tmpl` files) are processed with data from:
 ```
 
 ### Test Coverage
-The `verify-dotfiles-installation.sh` script includes 40+ automated tests:
+The `verify-dotfiles-installation.sh` script includes 45+ automated tests:
 
 - ✅ Mise installation and functionality
 - ✅ UV tool installation and management  
-- ✅ Language runtime installations
+- ✅ Language runtime installations (golang, nodejs, neovim, tmux, 1password-cli)
 - ✅ Python tool installations (llm, ipython)
+- ✅ Node.js and npm tool installations (@anthropic-ai/claude-dev)
 - ✅ PATH configuration verification
 - ✅ Shell integration checks
 - ✅ File installation verification
@@ -146,12 +149,15 @@ Central configuration file that defines:
 packages:
   mise:
     - golang@latest
+    - nodejs@latest
     - neovim@latest
     - tmux@3.3
     - 1password-cli@latest
   uv:
     - llm  # AI CLI tool
     - ipython  # Enhanced Python REPL
+  npm:
+    - "@anthropic-ai/claude-dev"  # Claude Code AI assistant
 ```
 
 ### .chezmoi.toml.tmpl
