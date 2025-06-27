@@ -18,6 +18,10 @@ RUN apt-get update && apt-get install -y \
 # Install chezmoi
 RUN sh -c "$(curl -fsLS https://www.chezmoi.io/get)" -- -b /usr/local/bin
 
+# Accept GitHub host key to avoid interactive prompts
+RUN mkdir -p /root/.ssh && \
+    ssh-keyscan github.com >> /root/.ssh/known_hosts
+
 # Set default shell to zsh
 RUN chsh -s /bin/zsh root
 

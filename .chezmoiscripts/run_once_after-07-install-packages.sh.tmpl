@@ -42,7 +42,13 @@ echo "~ languages (installations)"
   {{ $installer := $toolMap.installer }}
   {{ $tools := $toolMap.global }}
   {{ range sortAlpha $tools -}}
-    {{ $installer }} {{ . }} >/dev/null 2>&1 || true && echo "~~~ {{ . }} is installed"
+    # Check if the installer command is available before trying to use it
+    {{ $installerCmd := index (split $installer " ") 0 }}
+    if command -v {{ $installerCmd }} >/dev/null 2>&1; then
+      {{ $installer }} {{ . }} >/dev/null 2>&1 || true && echo "~~~ {{ . }} is installed"
+    else
+      echo "~~~ {{ . }} skipped ({{ $installerCmd }} not available)"
+    fi
   {{ end -}}
 {{ end -}}
 
@@ -60,6 +66,12 @@ echo "~ languages (installations)"
   {{ end -}}
   */}}
   {{ range sortAlpha $libs -}}
-    {{ $installer }} {{ . }} >/dev/null 2>&1 || true && echo "~~~ {{ . }} is installed"
+    # Check if the installer command is available before trying to use it
+    {{ $installerCmd := index (split $installer " ") 0 }}
+    if command -v {{ $installerCmd }} >/dev/null 2>&1; then
+      {{ $installer }} {{ . }} >/dev/null 2>&1 || true && echo "~~~ {{ . }} is installed"
+    else
+      echo "~~~ {{ . }} skipped ({{ $installerCmd }} not available)"
+    fi
   {{ end -}}
 {{ end -}}

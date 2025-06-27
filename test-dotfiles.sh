@@ -27,12 +27,15 @@ if [ $? -eq 0 ]; then
     echo -e "${YELLOW}Type 'exit' to stop the container.${NC}"
     echo ""
     
+    # Get current branch name
+    CURRENT_BRANCH=$(git branch --show-current)
+    echo -e "${YELLOW}Using branch: $CURRENT_BRANCH${NC}"
+    
     # Run the container interactively and install dotfiles
-    docker run -it --rm dotfiles-test /bin/zsh -c "
-        echo 'Installing uv...'
-        curl -LsSf https://astral.sh/uv/install.sh | sh
+    docker run -it --rm -e CURRENT_BRANCH="$CURRENT_BRANCH" dotfiles-test /bin/zsh -c "
         echo 'Installing dotfiles with chezmoi...'
-        chezmoi init --apply peterjmorgan
+        echo 'Using branch: $CURRENT_BRANCH'
+        chezmoi init --apply peterjmorgan --branch $CURRENT_BRANCH
         echo 'Dotfiles installed! Starting interactive shell...'
         exec /bin/zsh -l
     "
