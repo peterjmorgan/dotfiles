@@ -6,6 +6,12 @@ export PATH="$PATH:{{ .chezmoi.homeDir }}/bin"
 # KEY="/home/$USER/key.txt"
 KEY="{{ .chezmoi.homeDir }}/key.txt"
 
+# Skip key decryption in non-interactive environments (like automated tests)
+if [ ! -t 0 ] && [ -z "${AGE_PASSPHRASE:-}" ]; then
+    echo "Skipping key decryption in non-interactive environment"
+    exit 0
+fi
+
 if [ ! -f $KEY ]; then
     age --decrypt --output $KEY "{{ .chezmoi.sourceDir }}/key.txt.age"
     chmod 600 $KEY
