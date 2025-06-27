@@ -51,14 +51,24 @@ else
     exit 1
 fi
 
-# Test 3: Install and apply dotfiles
-echo -e "${BLUE}Test 3: Dotfiles installation${NC}"
-if docker run --rm dotfiles-test /bin/zsh -c "chezmoi init --apply peterjmorgan" 2>/dev/null; then
-    echo -e "${GREEN}✓ Dotfiles installation test passed${NC}"
+# Test 3: Install and apply dotfiles with comprehensive verification
+echo -e "${BLUE}Test 3: Dotfiles installation and verification${NC}"
+
+# Get current branch name  
+CURRENT_BRANCH=$(git branch --show-current)
+echo -e "${YELLOW}Using branch: $CURRENT_BRANCH${NC}"
+
+# Copy verification script to container and run full test
+if docker run --rm -v "$(pwd)/verify-dotfiles-installation.sh:/verify-dotfiles-installation.sh" \
+   -e CURRENT_BRANCH="$CURRENT_BRANCH" dotfiles-test /bin/zsh -c "
+    chezmoi init --apply peterjmorgan --branch \$CURRENT_BRANCH &&
+    chmod +x /verify-dotfiles-installation.sh &&
+    /verify-dotfiles-installation.sh
+" 2>&1; then
+    echo -e "${GREEN}✓ Dotfiles installation and verification test passed${NC}"
 else
-    echo -e "${RED}✗ Dotfiles installation test failed${NC}"
-    echo -e "${YELLOW}This might be expected if the repository is private or requires authentication.${NC}"
-    echo -e "${YELLOW}You can test manually with: ./test-dotfiles.sh${NC}"
+    echo -e "${RED}✗ Dotfiles installation or verification test failed${NC}"
+    echo -e "${YELLOW}Check the output above for specific test failures.${NC}"
     exit 1
 fi
 
