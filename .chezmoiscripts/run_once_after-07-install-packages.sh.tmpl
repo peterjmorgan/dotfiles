@@ -50,7 +50,7 @@ echo "~ languages (installations)"
   {{ range sortAlpha $tools -}}
     # Check if the installer command is available before trying to use it
     {{ $parts := split $installer " " }}
-    {{ $installerCmd := index $parts 0 }}
+    {{ $installerCmd := first $parts }}
     if command -v {{ $installerCmd }} >/dev/null 2>&1; then
       {{ $installer }} {{ . }} >/dev/null 2>&1 || true && echo "~~~ {{ . }} is installed"
     else
@@ -75,7 +75,7 @@ echo "~ languages (installations)"
   {{ range sortAlpha $libs -}}
     # Check if the installer command is available before trying to use it
     {{ $parts := split $installer " " }}
-    {{ $installerCmd := index $parts 0 }}
+    {{ $installerCmd := first $parts }}
     if command -v {{ $installerCmd }} >/dev/null 2>&1; then
       {{ $installer }} {{ . }} >/dev/null 2>&1 || true && echo "~~~ {{ . }} is installed"
     else
