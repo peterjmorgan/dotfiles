@@ -1,5 +1,7 @@
 #!/bin/sh
 
+echo "=== DEBUG: INSTALLING UV (step 2 of 4) ==="
+
 # Install uv if not already installed
 if ! command -v uv >/dev/null 2>&1; then
     echo "Installing uv..."
@@ -16,4 +18,6 @@ if ! command -v uv >/dev/null 2>&1; then
     fi
 else
     echo "uv is already installed at: $(which uv)"
-fi 
+fi
+
+echo "=== DEBUG: UV INSTALLATION COMPLETE ===" 

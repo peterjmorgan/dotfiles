@@ -2,8 +2,14 @@
 
 set -eufo pipefail
 
+echo "=== DEBUG: INSTALLING PACKAGES (step 3 of 4) ==="
+
 # Ensure mise is in PATH
 export PATH="$HOME/.local/bin:$PATH"
+
+# Debug: Show what's available
+echo "DEBUG: mise available: $(command -v mise || echo 'NO')"
+echo "DEBUG: uv available: $(command -v uv || echo 'NO')"
 
 # Try to update mise if available, but don't fail if it's not
 if command -v mise >/dev/null 2>&1; then

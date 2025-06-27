@@ -1,5 +1,7 @@
 #!/bin/sh
 
+echo "=== DEBUG: INSTALLING MISE (step 1 of 4) ==="
+
 # Install mise if not already installed
 if ! command -v mise >/dev/null 2>&1; then
     echo "Installing mise..."
@@ -16,4 +18,6 @@ if ! command -v mise >/dev/null 2>&1; then
     fi
 else
     echo "mise is already installed at: $(which mise)"
-fi 
+fi
+
+echo "=== DEBUG: MISE INSTALLATION COMPLETE ===" 
