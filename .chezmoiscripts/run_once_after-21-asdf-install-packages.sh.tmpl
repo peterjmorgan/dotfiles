@@ -2,7 +2,15 @@
 
 set -eufo pipefail
 
-mise self-update >/dev/null 2>&1 || true && echo "~ mise has been updated"
+# Ensure mise is in PATH
+export PATH="$HOME/.local/bin:$PATH"
+
+# Try to update mise if available, but don't fail if it's not
+if command -v mise >/dev/null 2>&1; then
+    mise self-update >/dev/null 2>&1 || true && echo "~ mise has been updated"
+else
+    echo "~ mise not found, skipping mise update"
+fi
 
 echo "~ languages (installations)"
 
@@ -17,8 +25,24 @@ echo "~ languages (installations)"
     # which is parsed internally as "invalid" weirdly
     # I use this to cut down the install time by skipping languages
     # I only use at home and vice versa
-    mise install {{ . }}@{{ $version }} >/dev/null 2>&1 || true && echo "~~ {{ . }} {{ $version }} is installed"
-    mise use {{ . }}@{{ $version }} --global >/dev/null 2>&1 || true
+    if command -v mise >/dev/null 2>&1; then
+      mise install {{ . }}@{{ $version }} >/dev/null 2>&1 || true && echo "~~ {{ . }} {{ $version }} is installed"
+      mise use {{ . }}@{{ $version }} --global >/dev/null 2>&1 || true
+    else
+      echo "~~ {{ . }} {{ $version }} skipped (mise not available)"
+    fi
+  {{ end -}}
+{{ end -}}
+
+# -- Globally installed tools -- #
+
+{{ range sortAlpha (keys .tools) -}}
+  echo "~~ {{ . }} tools"
+  {{ $toolMap := (get $.tools .) }}
+  {{ $installer := $toolMap.installer }}
+  {{ $tools := $toolMap.global }}
+  {{ range sortAlpha $tools -}}
+    {{ $installer }} {{ . }} >/dev/null 2>&1 || true && echo "~~~ {{ . }} is installed"
   {{ end -}}
 {{ end -}}
 

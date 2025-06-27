@@ -19,6 +19,11 @@ languages:
   # shellcheck: 0.8.0
   tmux: 3.3
   1password-cli: latest
+tools:
+  uv:
+    installer: uv tool install
+    global:
+      - llm
 libraries:
   # cargo:
   #   installer: cargo install
@@ -40,7 +45,7 @@ libraries:
 #      - golang.org/x/tools/cmd/guru@latest
 #      - mvdan.cc/gofumpt@latest
   python:
-    installer: uv pip install
+    installer: uv tool install
     global:
       # - PyGithub
       # - beautifulsoup4

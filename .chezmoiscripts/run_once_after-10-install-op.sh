@@ -2,11 +2,16 @@
 
 set -eufo pipefail
 
-# mise update >/dev/null 2>&1 || true && echo "= mise has been updated"
-mise self-update || true && echo "= mise has been updated"
+# Ensure mise is in PATH
+export PATH="$HOME/.local/bin:$PATH"
 
-# mise plugin-add 1password-cli >/dev/null 2>&1 || true
-# mise install 1password-cli latest >/dev/null 2>&1 || true && echo "== 1password-cli latest is installed"
-# mise use 1password-cli latest --global >/dev/null 2>&1 || true
-mise install 1password-cli@latest || true && echo "== 1password-cli latest is installed"
-mise use 1password-cli@latest --global || true
+# Check if mise is available before trying to use it
+if command -v mise >/dev/null 2>&1; then
+    mise self-update >/dev/null 2>&1 || true && echo "= mise has been updated"
+    
+    # Install 1password-cli
+    mise install 1password-cli@latest >/dev/null 2>&1 || true && echo "== 1password-cli latest is installed"
+    mise use 1password-cli@latest --global >/dev/null 2>&1 || true
+else
+    echo "= mise not found, skipping 1password-cli installation"
+fi

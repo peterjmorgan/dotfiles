@@ -22,6 +22,18 @@ echo "~ languages (installations)"
   {{ end -}}
 {{ end -}}
 
+# -- Globally installed tools -- #
+
+{{ range sortAlpha (keys .tools) -}}
+  echo "~~ {{ . }} tools"
+  {{ $toolMap := (get $.tools .) }}
+  {{ $installer := $toolMap.installer }}
+  {{ $tools := $toolMap.global }}
+  {{ range sortAlpha $tools -}}
+    {{ $installer }} {{ . }} >/dev/null 2>&1 || true && echo "~~~ {{ . }} is installed"
+  {{ end -}}
+{{ end -}}
+
 # -- Globally installed packages -- #
 
 {{ range sortAlpha (keys .libraries) -}}
