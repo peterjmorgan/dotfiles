@@ -404,14 +404,6 @@ function tslog() {
     tspin -c "tail ---disable-inotify -f $found_file"
 }
 
-function pbcopy() {
-	tee <&0 | clip.exe
-}
-
-function pbpaste() {
-	powershell.exe Get-Clipboard | sed 's/\r$//' | sed -z '$ s/\n$//'
-}
-
 function f() {
     local dir
     dir=$(find ${1:-.} -type d 2>/dev/null | fzf) && cd "$dir"
@@ -422,4 +414,12 @@ function start_ssh_agent() {
     eval "$(ssh-agent -s)"
     # Add your SSH key
     ssh-add ~/.ssh/peterjmorgan@gmail.com_github_rsa
+}
+
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
 }
