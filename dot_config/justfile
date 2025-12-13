@@ -2,7 +2,7 @@
 #   make gcc g++ python ruby openssl
 
 set export
-# removing golang install in favor of asdf
+# removing golang install in favor of mise
 # GOLANG_VERSION := "1.19.3"
 # GOLANG_SHASUM := "74b9640724fd4e6bb0ed2a1bc44ae813a03f1e72a4c76253e2d5c015494430ba"
 
@@ -33,12 +33,9 @@ shell:
   bash -c "$(curl https://raw.githubusercontent.com/ellie/atuin/main/install.sh)"
 
 
-# install python3.x with pyenv
-python-setup:
-  # brew install pyenv make openssl gcc
-  # TODO: Ubuntu-linux specific for WSL. Need to refactor this into OS-specific handlers
-  sudo apt install gcc g++ openssl make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
-  pyenv install $(pyenv install -l | grep -v - | tr -d ' ' | grep '^3' | tail -1) && pyenv rehash
+# install uv for Python management
+uv-setup:
+  curl -LsSf https://astral.sh/uv/install.sh | sh
 
 # install phylum CLI latest
 phylum:
@@ -70,13 +67,13 @@ phylum:
 #     echo "brew needed"
 #   fi
 
-# removed in favor of asdf
+# removed in favor of mise
 # # install onepassword-cli
 # op:
 #   curl -sLO https://downloads.1password.com/linux/debian/amd64/stable/1password-cli-amd64-latest.deb
 #   sudo dpkg --install 1password-cli-amd64-latest.deb
 
-# removed in favor of asdf
+# removed in favor of mise
 # install-go:
 #   url="https://golang.org/dl/go${GOLANG_VERSION}.linux-amd64.tar.gz" && \
 #   wget -O go.tgz -nv "$url" && \

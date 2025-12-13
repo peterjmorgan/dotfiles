@@ -17,5 +17,14 @@ fi
 
 # setup packer for nvim
 if [ ! -d "$HOME/.local/share/nvim/site/pack/packer/start/" ]; then
-	git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+	# Configure git to use HTTPS instead of SSH for GitHub
+	git config --global url."https://github.com/".insteadOf git@github.com:
+	
+	# Clone packer.nvim with error handling
+	mkdir -p ~/.local/share/nvim/site/pack/packer/start/
+	git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim || {
+		echo "Warning: Failed to clone packer.nvim, continuing installation..."
+		# Don't fail the entire script if packer clone fails
+		true
+	}
 fi

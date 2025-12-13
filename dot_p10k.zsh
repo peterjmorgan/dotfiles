@@ -562,6 +562,7 @@
   # typeset -g POWERLEVEL9K_DIRENV_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
   ###############[ asdf: asdf version manager (https://github.com/asdf-vm/asdf) ]###############
+  # Note: This configuration also works with mise (https://mise.jdx.dev/), which is a drop-in replacement for asdf
   # Default asdf color. Only used to display tools for which there is no color override (see below).
   # Tip:  Override this parameter for ${TOOL} with POWERLEVEL9K_ASDF_${TOOL}_FOREGROUND.
   typeset -g POWERLEVEL9K_ASDF_FOREGROUND=6
@@ -934,6 +935,7 @@
   # typeset -g POWERLEVEL9K_ANACONDA_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
   ################[ pyenv: python environment (https://github.com/pyenv/pyenv) ]################
+  # Note: This configuration also works with uv (https://uv.pypa.io/), which is a modern Python package manager
   # Pyenv color.
   typeset -g POWERLEVEL9K_PYENV_FOREGROUND=6
   # Hide python version if it doesn't come from one of these sources.
