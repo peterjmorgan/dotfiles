@@ -23,6 +23,5 @@ brew "jq" 			  # json parsing
 brew "fzf"            # fuzzy finder
 brew "hl"             # log file highlighter
 
-# fonts
-tap "homebrew/cask-fonts"
+# fonts (now in main cask repo, no tap needed)
 cask "font-meslo-lg-nerd-font"
