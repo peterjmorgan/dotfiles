@@ -32,6 +32,12 @@
     url = "https://github.com/peterjmorgan/NormalNvim.git"
     refreshPeriod = "168h"
 
+# Claude config (private repo, requires SSH)
+[".claude"]
+    type = "git-repo"
+    url = "git@github.com:peterjmorgan/dot-claude.git"
+    refreshPeriod = "168h"
+
 {{- $ageVersion := "1.0.0" }}
 [".local/bin/age"]
     type = "file"
