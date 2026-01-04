@@ -2,3 +2,4 @@ key.txt.age
 # Always ignore encrypted files and SSH directory to prevent encryption errors
 private_dot_ssh/
 encrypted_literal_run_once_03_setup_op.sh.tmpl.literal.age
+.zshenv
