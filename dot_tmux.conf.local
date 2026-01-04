@@ -20,18 +20,18 @@ if -b 'command -v piknik > /dev/null 2>&1' 'bind y run -b "tmux save-buffer - | 
 # by default, launching tmux will update tpm and all plugins
 #   - true (default)
 #   - false
-tmux_conf_update_plugins_on_launch=true
+tmux_conf_update_plugins_on_launch=false
 
 # by default, reloading the configuration will update tpm and all plugins
 #   - true (default)
 #   - false
-tmux_conf_update_plugins_on_reload=true
+tmux_conf_update_plugins_on_reload=false
 
 # by default, reloading the configuration will uninstall tpm and plugins when no
 # plugins are enabled
 #   - true (default)
 #   - false
-tmux_conf_uninstall_plugins_on_reload=true
+tmux_conf_uninstall_plugins_on_reload=false
 
 # /!\ the tpm bindings differ slightly from upstream:
 #   - installing plugins: <prefix> + I
@@ -42,3 +42,21 @@ tmux_conf_uninstall_plugins_on_reload=true
 #set -g @plugin 'tmux-plugins/tmux-cpu'
 #set -g @wormhole-save-folder '~/downloads/'
 #
+
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @plugin "loichyan/tmux-toggle-popup"
+
+set -g @resurrect-capture-pane-contents 'on'  # Save pane contentsset -g @resurrect-capture-pane-contents 'on'  # Save pane contents
+set -g @resurrect-debug 'on'
+set -g @resurrect-dir '~/.tmux/resurrect'
+
+# Turn on autostart to boost the first call of @popup-toggle.
+set -g @popup-autostart on
+# Set @popup-toggle on the popup server so toggle keys work inside popups
+set -g @popup-on-init 'set -g @popup-toggle ~/.tmux/plugins/tmux-toggle-popup/src/toggle.sh'
+bind -n M-t run "#{@popup-toggle} -w75% -h75% -Ed'{popup_caller_pane_path}' --toggle-key '-n M-t'"
+bind -n M-g run "#{@popup-toggle} -w90% -h90% -Ed'{popup_caller_pane_path}' --name=lazygit --toggle-key '-n M-g' lazygit"
+bind -n M-r run "#{@popup-toggle} -w80% -h80% -Ed'{popup_caller_pane_path}' --name=readme --toggle-key '-n M-r' nvim -c 'setlocal noswapfile bufhidden=hide' /tmp/tmux-notes-#{session_name}.md"
+
+# NOTE: Don't add 'run ~/.tmux/plugins/tpm/tpm' here - oh-my-tmux handles TPM internally
