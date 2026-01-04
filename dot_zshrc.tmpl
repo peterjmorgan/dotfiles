@@ -183,29 +183,44 @@ if [[ -z "$GEMINI_API_KEY" ]] && command -v op &>/dev/null; then
 fi
 
 # ============================================================================
-# LAZY-LOADING OPTIMIZATION: atuin (~1400ms saved!)
+# HYBRID ATUIN: History tracking immediate, search UI lazy (~150ms saved)
 # ============================================================================
-# Lazy-load atuin - only initialize when Ctrl-R is pressed or 'atuin' command is run
+# History tracking must run from shell start, but search widget can be lazy
 if command -v atuin &>/dev/null; then
-  # Placeholder function for atuin command
+  # IMMEDIATE: Session and history tracking hooks (inlined to avoid subprocess)
+  export ATUIN_SESSION=$(atuin uuid)
+  ATUIN_HISTORY_ID=""
+
+  _atuin_preexec() {
+    ATUIN_HISTORY_ID=$(atuin history start -- "$1")
+  }
+  _atuin_precmd() {
+    local EXIT="$?"
+    [[ -z "${ATUIN_HISTORY_ID:-}" ]] && return
+    (ATUIN_LOG=error atuin history end --exit $EXIT -- $ATUIN_HISTORY_ID &) >/dev/null 2>&1
+    ATUIN_HISTORY_ID=""
+  }
+
+  autoload -U add-zsh-hook
+  add-zsh-hook preexec _atuin_preexec
+  add-zsh-hook precmd _atuin_precmd
+
+  # LAZY: Search widget - full init only when Ctrl-R is pressed
+  _atuin_lazy_search() {
+    zle -D _atuin_lazy_search
+    bindkey -r '^R'
+    eval "$(command atuin init zsh --disable-up-arrow)"
+    zle _atuin_search_widget
+  }
+  zle -N _atuin_lazy_search
+  bindkey '^R' _atuin_lazy_search
+
+  # LAZY: atuin command - full init only when command is run
   atuin() {
     unfunction atuin 2>/dev/null
     eval "$(command atuin init zsh --disable-up-arrow)"
     atuin "$@"
   }
-
-  # Bind Ctrl-R to trigger atuin init + search
-  _atuin_lazy_search() {
-    # Remove this widget and the binding
-    zle -D _atuin_lazy_search
-    bindkey -r '^R'
-    # Initialize atuin
-    eval "$(command atuin init zsh --disable-up-arrow)"
-    # Trigger the search
-    zle _atuin_search_widget
-  }
-  zle -N _atuin_lazy_search
-  bindkey '^R' _atuin_lazy_search
 fi
 
 # Load fzf key bindings AFTER other plugins to prevent them from being overwritten
