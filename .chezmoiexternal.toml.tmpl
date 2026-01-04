@@ -33,7 +33,8 @@
     refreshPeriod = "168h"
 
 # Claude config (private repo, requires SSH)
-[".claude"]
+# Cloned to projects/, install.sh creates symlinks to ~/.claude/
+["projects/dot-claude"]
     type = "git-repo"
     url = "git@github.com:peterjmorgan/dot-claude.git"
     refreshPeriod = "168h"
