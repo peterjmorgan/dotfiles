@@ -1,5 +1,7 @@
 # zshrc
 {{- $homeDir := .chezmoi.homeDir }}
+{{- $isMacOS := eq .chezmoi.os "darwin" }}
+{{- $isLinux := eq .chezmoi.os "linux" }}
 {{- $paths := list }}
 {{- range $_, $relPath := list "bin" ".local/bin" ".local/share/mise/shims" }}
 {{    $path := joinPath $homeDir $relPath }}
@@ -20,11 +22,13 @@ unset ZSH_DEBUG
 export ZSH_CONFIG=~/.zsh
 autoload -Uz compinit
 
-if grep -q microsoft /proc/version; then
+# Detect WSL (Linux only)
+ON_WSL=0
+{{ if $isLinux -}}
+if [[ -f /proc/version ]] && grep -q microsoft /proc/version 2>/dev/null; then
 	ON_WSL=1
-else
-	ON_WSL=0
 fi
+{{ end -}}
 
 if [[ $ON_WSL == 0 ]]; then
 	# echo "not on WSL"
@@ -63,9 +67,19 @@ for config_file ("${location}/dot_zsh/"*.zsh) {
 
 #source /root/.config/broot/launcher/bash/br
 
-#homebrew
+# Homebrew setup (OS-specific paths)
+{{ if $isMacOS -}}
+# macOS homebrew (Apple Silicon or Intel)
+if [[ -f /opt/homebrew/bin/brew ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [[ -f /usr/local/bin/brew ]]; then
+  eval "$(/usr/local/bin/brew shellenv)"
+fi
+{{ else -}}
+# Linux homebrew
 export BREW_HOME="/home/linuxbrew/.linuxbrew/bin"
 export PATH="$PATH:$BREW_HOME"
+{{ end }}
 
 # ============================================================================
 # LAZY-LOADING OPTIMIZATION: zoxide (~400ms saved!)
@@ -120,7 +134,16 @@ fi
 # eval `dircolors ~/.dotfiles/etc/bliss.dircolors`
 #
 
-# Direct plugin loading (replacing antigen for faster startup)
+{{ if $isMacOS -}}
+# ============================================================================
+# macOS: Use antigen for plugin management
+# ============================================================================
+source ~/antigen.zsh
+antigen init ~/.antigenrc
+{{ else -}}
+# ============================================================================
+# Linux: Direct plugin loading (faster startup)
+# ============================================================================
 # Add zsh-completions to fpath
 fpath=(~/.zsh/zsh-completions/src $fpath)
 
@@ -133,6 +156,7 @@ source ~/.powerlevel10k/powerlevel10k.zsh-theme
 
 # Load zsh-autosuggestions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+{{ end }}
 
 # Set editor (nvim should be available via mise)
 if command -v nvim &>/dev/null; then
@@ -145,17 +169,21 @@ fi
 # LAZY-LOADING OPTIMIZATION: mise (~700ms saved!)
 # ============================================================================
 # Lazy-load mise to save startup time
-mise() {
-  unfunction mise
-  eval "$(command mise activate zsh)"
-  mise "$@"
-}
+if command -v mise &>/dev/null; then
+  mise() {
+    unfunction mise
+    eval "$(command mise activate zsh)"
+    mise "$@"
+  }
+fi
 
 # Make mise shims available immediately without full activation
 export PATH="$HOME/.local/share/mise/shims:$PATH"
 
-# Load dircolors if available
+{{ if $isLinux -}}
+# Load dircolors if available (Linux only)
 [[ -f ~/.dircolors ]] && eval "$(dircolors -b ~/.dircolors)"
+{{ end }}
 
 # API keys - load from environment or 1password
 # To set: export GEMINI_API_KEY in ~/.zshenv or use `op read`
@@ -195,14 +223,18 @@ fi
 if [[ -v ZSH_DEBUG ]]; then
     echo "Loading fzf key bindings (post-plugins)"
 fi
-source "${location}/dot_zsh/fzf_key-bindings.zsh"
+[[ -f "${location}/dot_zsh/fzf_key-bindings.zsh" ]] && source "${location}/dot_zsh/fzf_key-bindings.zsh"
 
-# Load zsh-syntax-highlighting - MUST be at the end
+{{ if $isLinux -}}
+# Load zsh-syntax-highlighting - MUST be at the end (Linux direct loading)
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+{{ end }}
 
 # for justfile python recipes
 export XDG_RUNTIME_DIR=/tmp
 
 export ATAC_KEY_BINDINGS="$HOME/.config/atac/vim_key_bindings.toml"
+
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # zprof
