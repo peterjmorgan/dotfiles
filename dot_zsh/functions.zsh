@@ -309,7 +309,7 @@ function rgip() {
 }
 
 function rgv() {
-  rg --vimgrep $1 | vim -
+  rg --vimgrep $1 | nv -
 }
 
 # function goland() {
@@ -404,6 +404,19 @@ function tslog() {
     tspin -c "tail ---disable-inotify -f $found_file"
 }
 
+function hllast() {
+	local found_file=$(ls -t *(om[1]))
+	hl $found_file
+}
+
+function pbcopy() {
+	tee <&0 | clip.exe
+}
+
+function pbpaste() {
+	powershell.exe Get-Clipboard | sed 's/\r$//' | sed -z '$ s/\n$//'
+}
+
 function f() {
     local dir
     dir=$(find ${1:-.} -type d 2>/dev/null | fzf) && cd "$dir"
@@ -414,6 +427,56 @@ function start_ssh_agent() {
     eval "$(ssh-agent -s)"
     # Add your SSH key
     ssh-add ~/.ssh/peterjmorgan@gmail.com_github_rsa
+    ssh-add ~/.ssh/halcyon_github
+}
+
+
+function lgi() {
+      local issue="$1"
+      local repo=""
+
+      echo "Issue: $issue"
+
+      # Check if we're in a git repository
+      if ! git rev-parse --git-dir > /dev/null 2>&1; then
+          echo "Not in a git repository. Selecting from your GitHub repos..."
+
+          # Get repos sorted by last updated (gh does the sorting for us)
+          repo=$(gh repo list --limit 100 --json name,owner,updatedAt,description \
+              --template '{{range .}}{{.owner.login}}/{{.name}} | {{.updatedAt}} | {{.description}}{{"\n"}}{{end}}' \
+              | fzf --header "Select a repository:" \
+                    --preview 'gh repo view {1} --json description,url,primaryLanguage,stargazerCount --template "Description: {{.description}}\nURL:
+  {{.url}}\nLanguage: {{.primaryLanguage.name}}\nStars: {{.stargazerCount}}"' \
+                    --preview-window right:50% \
+              | cut -d'|' -f1 \
+              | xargs)
+
+          # Check if user selected a repo
+          if [[ -z "$repo" ]]; then
+              echo "No repository selected. Exiting."
+              return 1
+          fi
+
+          echo "Selected repository: $repo"
+          llm github-issue "$issue" --create --repo "$repo"
+      else
+          # We're in a git repo, use normal behavior
+          llm github-issue "$issue" --create
+      fi
+}
+
+function psg() {
+	local search="$1"
+
+	ps aux | grep $search | grep -v grep
+}
+
+function y() {
+        local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+        yazi "$@" --cwd-file="$tmp"
+        IFS= read -r -d '' cwd < "$tmp"
+        [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+        rm -f -- "$tmp"
 }
 
 function y() {

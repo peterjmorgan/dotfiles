@@ -4,7 +4,7 @@ brew "gron"           # grep json easily
 brew "viddy"          # modern watch command
 brew "tig"            # git tui client
 brew "bat"            # cat replacement
-brew "exa"            # ls replacement
+brew "lsd"            # ls replacement (was exa)
 brew "fd"             # find replacement
 brew "ripgrep"        # better grep
 brew "dust"           # better du replacement
@@ -20,6 +20,8 @@ brew "tre-command"    # better tree command
 brew "lazygit"        # way better git UI
 brew "mosh" 		  # better ssh
 brew "jq" 			  # json parsing
+brew "fzf"            # fuzzy finder
+brew "hl"             # log file highlighter
 
 # fonts
 tap "homebrew/cask-fonts"

@@ -7,8 +7,8 @@ fi
 # Don't change. The following determines where YADR is installed.
 
 # PS
-alias psa="ps aux"
-alias psg="ps aux | grep "
+# alias psa="ps aux"
+# alias psg="ps aux | grep "
 
 # Moving around
 alias ..='cd ..'
@@ -16,16 +16,9 @@ alias cdb='cd -'
 
 # Show human friendly numbers and colors
 alias df='df -h'
-# alias ls='ls --color'
-# alias ll='ls -alGh'
-alias l='eza -l --sort=modified'
-alias ls='eza -l'
-alias ld='eza -lD'
-alias lf='eza -lf --color=always | grep -v /'
-alias lh='eza -dl .* --group-directories-first'
-alias ll='eza -al --group-directories-first'
-alias ls='eza -al --color=always --sort=size | grep -v /'
-alias lt='eza -al --sort=modified'
+alias ll='ls -alGh'
+alias l='ls -lhtr'
+alias ls='lsd --icon never'
 
 # show me files matching "ls grep"
 alias lsg='ll | grep'
@@ -110,7 +103,7 @@ alias less='less -r'
 alias lh='ls -alt | head' # see the last modified files
 alias screen='TERM=screen screen'
 alias cl='clear'
-alias tail='tail ---disable-inotify'
+# alias tail='tail ---disable-inotify'  # this confuses LLMs
 
 # Zippin
 # alias gz='tar -zcvf'
@@ -152,6 +145,10 @@ alias vissh='$EDITOR ~/.ssh/config'
 alias vagrant='/mnt/c/HashiCorp/Vagrant/bin/vagrant.exe'
 alias cmd='/mnt/c/Windows/system32/cmd.exe'
 alias powershell='/mnt/c/Windows/system32/WindowsPowerShell/v1.0/powershell.exe'
+alias psh='pwsh.exe'
+alias psh-dev='powershell.exe -noe -c "&{Import-Module \"\"\"C:\Program Files\Microsoft Visual
+  Studio\2022\Professional\Common7\Tools\Microsoft.VisualStudio.DevShell.dll\"\"\"; Enter-VsDevShell 345e64b1}"'
+
 alias explorer='/mnt/c/Windows/explorer.exe'
 alias notify-send='/mnt/c/Users/peter/bin/notify-send.exe'
 alias subl='/mnt/c/Program\ Files/Sublime\ Text/sublime_text.exe'
@@ -186,3 +183,17 @@ alias je='$EDITOR ~/.config/justfile'
 alias ct='cracktool'
 # alias pycdas='/home/pmorgan/win-projects/playground/pycdc/pycdas'
 alias rt='/mnt/c/Users/peter/.cargo/bin/rhysidatool.exe'
+
+alias clauded='claude --dangerously-skip-permissions'
+alias jc='just --choose'
+alias ws='wormhole send'
+
+alias oc='opencode'
+
+alias hll='hl *(.om[1])'
+alias wo='wsl-open .'
+
+alias serena='uvx --from git+https://github.com/oraios/serena serena'
+
+alias update-completions='just --completions zsh > ~/.zsh/completions/_just'
+
