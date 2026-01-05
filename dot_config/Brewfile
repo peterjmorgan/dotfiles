@@ -22,6 +22,7 @@ brew "mosh" 		  # better ssh
 brew "jq" 			  # json parsing
 brew "fzf"            # fuzzy finder
 brew "hl"             # log file highlighter
+brew "yazi"           # terminal file manager
 
 # fonts (now in main cask repo, no tap needed)
 cask "font-meslo-lg-nerd-font"
