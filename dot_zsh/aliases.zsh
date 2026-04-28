@@ -153,7 +153,7 @@ alias explorer='/mnt/c/Windows/explorer.exe'
 alias notify-send='/mnt/c/Users/peter/bin/notify-send.exe'
 alias subl='/mnt/c/Program\ Files/Sublime\ Text/sublime_text.exe'
 #alias code='/mnt/c/Users/peter/AppData/Local/Programs/Microsoft\ VS\ Code/bin/code'
-alias open='wsl-open'
+# alias open='wsl-open'
 
 alias cdtmp='cd `mktemp -d /tmp/play-XXXX`'
 

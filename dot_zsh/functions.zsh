@@ -309,7 +309,7 @@ function rgip() {
 }
 
 function rgv() {
-  rg --vimgrep $1 | nv -
+  rg --vimgrep $1
 }
 
 # function goland() {
@@ -486,3 +486,58 @@ function y() {
 	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
 	rm -f -- "$tmp"
 }
+
+
+# Kill peteclaw process (handles both air-managed and direct execution)
+pckill() {
+  local pids parent_pids
+
+  # Find peteclaw binary processes (not tmux sessions, not grep, not this function)
+  pids=("${(@f)$(pgrep -f '/peteclaw.*(gateway|agent)' 2>/dev/null)}")
+
+  if [[ ${#pids[@]} -eq 0 || -z "${pids[1]}" ]]; then
+    echo "No running peteclaw process found."
+    return 1
+  fi
+
+  for pid in "${pids[@]}"; do
+    [[ -z "$pid" ]] && continue
+    local cmd=$(ps -o command= -p "$pid" 2>/dev/null)
+    local ppid=$(ps -o ppid= -p "$pid" 2>/dev/null | tr -d ' ')
+    local parent_cmd=$(ps -o command= -p "$ppid" 2>/dev/null)
+
+    echo "Found: PID $pid"
+    echo "  Command: $cmd"
+
+    if [[ "$parent_cmd" == air* ]]; then
+      echo "  Managed by air (PID $ppid)"
+      echo "  Killing air (will clean up child)..."
+      kill "$ppid" 2>/dev/null
+      # air sends SIGINT then SIGKILL after kill_delay
+      sleep 1
+      # Verify air is gone
+      if kill -0 "$ppid" 2>/dev/null; then
+        echo "  Air didn't exit, sending SIGKILL..."
+        kill -9 "$ppid" 2>/dev/null
+      fi
+    else
+      echo "  Direct process (not managed by air)"
+      echo "  Sending SIGINT..."
+      kill -INT "$pid" 2>/dev/null
+      sleep 1
+      if kill -0 "$pid" 2>/dev/null; then
+        echo "  Still running, sending SIGKILL..."
+        kill -9 "$pid" 2>/dev/null
+      fi
+    fi
+
+    # Final check
+    if kill -0 "$pid" 2>/dev/null; then
+      echo "  WARNING: PID $pid still running!"
+    else
+      echo "  Stopped."
+    fi
+  done
+}
+
+
