@@ -1,0 +1,17 @@
+# ABOUTME: Custom yazi configuration overrides.
+# ABOUTME: Adds hl log viewer opener for .log files.
+
+[opener]
+hl_log = [
+  { run = 'hl -L %s', block = true, desc = "Open with hl (log viewer)", for = "unix" },
+]
+
+[plugin]
+prepend_previewers = [
+  { url = "*.log", run = "hl-log" },
+]
+
+[open]
+prepend_rules = [
+  { url = "*.log", use = ["hl_log", "edit"] },
+]
