@@ -240,3 +240,12 @@ export ATAC_KEY_BINDINGS="$HOME/.config/atac/vim_key_bindings.toml"
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # zprof
+# export PATH="/opt/homebrew/bin:$PATH"
+export PATH="$PATH:/Applications/010 Editor.app/Contents/CmdLine" #ADDED BY 010 EDITOR
+
+if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
+
+# fabro
+export PATH="$HOME/.fabro/bin:$PATH"
+# Added by Maestro CLI installer
+export PATH="$HOME/.local/bin:$PATH"
