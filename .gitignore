@@ -1,0 +1,2 @@
+# Machine-local zsh overrides; sourced live from this directory, never shared.
+dot_zsh/zzz-local.zsh

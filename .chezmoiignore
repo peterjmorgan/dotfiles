@@ -3,3 +3,4 @@ key.txt.age
 private_dot_ssh/
 encrypted_literal_run_once_03_setup_op.sh.tmpl.literal.age
 .zshenv
+.zsh/zzz-local.zsh
