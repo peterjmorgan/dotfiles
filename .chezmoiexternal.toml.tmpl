@@ -1,8 +1,13 @@
 [".tmux_runtime"]
-    type = "archive"
-    url = "https://github.com/gpakosz/.tmux/archive/master.tar.gz"
-    exact = true
-    stripComponents = 1
+    type = "git-repo"
+    url = "https://github.com/gpakosz/.tmux.git"
+    refreshPeriod = "168h"
+
+# tpm bootstraps itself; the plugin list lives in .tmux.conf.local, so a fresh
+# machine still needs one `prefix + I` to pull the plugins down.
+[".tmux/plugins/tpm"]
+    type = "git-repo"
+    url = "https://github.com/tmux-plugins/tpm.git"
     refreshPeriod = "168h"
 
 # Zsh plugins (direct loading, no antigen needed)

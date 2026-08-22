@@ -23,6 +23,9 @@ brew "jq" 			  # json parsing
 brew "fzf"            # fuzzy finder
 brew "hl"             # log file highlighter
 brew "yazi"           # terminal file manager
+brew "tmux"           # terminal multiplexer
+brew "fpp"            # facebook path picker, prefix+F
+brew "tmux-fingers"   # hint-based on-screen grabbing, prefix+g
 
 # fonts (now in main cask repo, no tap needed)
 cask "font-meslo-lg-nerd-font"
