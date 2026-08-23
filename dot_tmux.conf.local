@@ -68,6 +68,10 @@ set -ga status-right "#(~/.tmux/continuum-save-primary.sh)" #!important
 # Its default F is oh-my-tmux's fpp binding, so keep this on prefix+g.
 set -g @fingers-key g
 
+# fingers also binds a jump-mode key, default J, which is oh-my-tmux's
+# resize-pane -D in its H/J/K/L set. Move it to G to keep that set intact.
+set -g @fingers-jump-key G
+
 # tmux-easy-motion: hint-based cursor jumps, for selecting arbitrary text.
 # prefix+S from normal mode (enters copy-mode at the target), plain s once
 # already in copy-mode. The defaults are unusable here: Space is
