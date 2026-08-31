@@ -26,6 +26,7 @@ brew "yazi"           # terminal file manager
 brew "tmux"           # terminal multiplexer
 brew "fpp"            # facebook path picker, prefix+F
 brew "tmux-fingers"   # hint-based on-screen grabbing, prefix+g
+brew "atuin"          # shell history database, ^R search
 
 # fonts (now in main cask repo, no tap needed)
 cask "font-meslo-lg-nerd-font"
