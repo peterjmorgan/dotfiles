@@ -27,10 +27,6 @@ install-homebrew:
 brew-bundle:
   brew bundle --file=Brewfile --no-lock
 
-# setup shell
-shell:
-  # atuin
-  bash -c "$(curl https://raw.githubusercontent.com/ellie/atuin/main/install.sh)"
 
 
 # install uv for Python management

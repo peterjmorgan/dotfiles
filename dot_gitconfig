@@ -1,5 +1,20 @@
 # set your user tokens as enivornment variables, such as ~/.secrets
 # See the README for examples.
+; [pager]
+    ; diff = delta
+    ; log = delta
+    ; reflog = delta
+    ; show = delta
+
+[delta]
+    plus-style = "syntax #012800"
+    minus-style = "syntax #340001"
+    syntax-theme = Monokai Extended
+    navigate = true
+
+[interactive]
+    diffFilter = delta --color-only
+
 [color]
   ui = true
 [color "branch"]
@@ -11,7 +26,9 @@
   frag = magenta bold
   old = red bold
   new = green bold
+
 [alias]
+  ohfuck = !! | slacktee.sh -c '@louis' -t 'HALP! I fucked up git again'
   # add
   a = add                           # add
   chunkyadd = add --patch           # stage commits chunk by chunk
@@ -85,7 +102,7 @@
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	upstream = !git push -u origin HEAD
 [format]
-  pretty = format:%C(cyan)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C(cyan)%s %C(magenta) [%an]%Creset
+  pretty = format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C(blue)%s %C(magenta) [%an]%Creset
 [merge]
   summary = true
   verbosity = 1
@@ -96,12 +113,12 @@
 [push]
   # 'git push' will push the current branch to its tracking branch
   # the usual default is to push all branches
-  default = tracking
-	default = current
-	autoSetupRemote = true
+  default = current
+  autoSetupRemote = true
 [core]
   autocrlf = false
   editor = vim
+	excludesfile = /Users/pmorgan/.gitignore_global
 [advice]
   statusHints = false
 [diff]
@@ -114,7 +131,13 @@
   enabled = true
 [user]
 	email = peterjmorgan@gmail.com
-	name = pmorgan
-
+	name = Peter Morgan
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
 [url "git@github.com:"]
-	insteadOf = https://github.com
+	pushInsteadOf = https://github.com/
+[url "https://github.com/rust-lang/crates.io-index"]
+          insteadOf = https://github.com/rust-lang/crates.io-index

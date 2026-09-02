@@ -4,3 +4,10 @@ private_dot_ssh/
 encrypted_literal_run_once_03_setup_op.sh.tmpl.literal.age
 .zshenv
 .zsh/zzz-local.zsh
+# Repo tooling, not dotfiles -- without this chezmoi writes these into $HOME.
+Dockerfile
+README.md
+TESTING.md
+test-dotfiles.sh
+test-dotfiles-automated.sh
+verify-dotfiles-installation.sh
