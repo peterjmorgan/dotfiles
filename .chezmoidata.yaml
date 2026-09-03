@@ -10,7 +10,7 @@ languages:
   # bat: latest
   # container-diff: 0.17.0
   # exa: 0.10.1
-  golang: latest
+  go: latest
   goreleaser: latest
   neovim: latest
   nodejs: latest

@@ -60,7 +60,7 @@ test_command "uv tool list works" "uv tool list" ""
 
 # Test 3: Check if languages were installed via mise
 echo -e "\n${YELLOW}🛠️  Testing mise-managed languages${NC}"
-test_command "golang installed" "mise list golang" "golang"
+test_command "go installed" "mise list go" "go"
 test_command "neovim installed" "mise list neovim" "neovim" 
 test_command "nodejs installed" "mise list nodejs" "nodejs"
 test_command "tmux installed" "mise list tmux" "tmux"
@@ -78,7 +78,7 @@ test_command "claude-dev installed globally" "npm list -g @anthropic-ai/claude-d
 
 # Test 5: Check if tools are actually executable
 echo -e "\n${YELLOW}⚡ Testing tool executability${NC}"
-test_command "golang executable" "mise exec golang@latest -- go version" "go version"
+test_command "go executable" "mise exec go@latest -- go version" "go version"
 test_command "neovim executable" "mise exec neovim@latest -- nvim --version" "NVIM"
 test_command "nodejs executable" "mise exec nodejs@latest -- node --version" "v"
 test_command "npm executable" "mise exec nodejs@latest -- npm --version" "" 
